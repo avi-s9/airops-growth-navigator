@@ -1,26 +1,27 @@
 import CitationChecker from "./CitationChecker";
+import ScrollReveal from "./ScrollReveal";
 
 const SectionHeader = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="mb-6 font-display text-[28px] text-foreground">{children}</h2>
+  <h2 className="mb-6 font-display text-[28px] tracking-[-0.02em] text-foreground">{children}</h2>
 );
 
 /* ─── 2A: Growth Loop Diagram ─── */
 function GrowthLoop() {
   const stages = [
-    { label: "Free Tool: AI Citation Checker", tag: "Zero friction, ungated", color: "primary" },
-    { label: "Gated: Full Domain Audit", tag: "Email capture", color: "zone-trust" },
-    { label: "Pre-populated AirOps Trial", tag: "Data carries over", color: "accent-dark" },
-    { label: "Aha Moment", tag: "Accelerated activation", color: "primary" },
+    { label: "Free Tool: AI Citation Checker", tag: "Zero friction, ungated" },
+    { label: "Gated: Full Domain Audit", tag: "Email capture" },
+    { label: "Pre-populated AirOps Trial", tag: "Data carries over" },
+    { label: "Aha Moment", tag: "Accelerated activation" },
   ];
 
   return (
-    <div className="mb-10">
+    <ScrollReveal className="mb-10">
       {/* Flow diagram */}
       <div className="mb-8 flex items-center justify-between gap-2 overflow-x-auto rounded-xl border border-border bg-card p-6 shadow-card">
         {stages.map((s, i) => (
           <div key={i} className="flex items-center gap-2">
-            <div className="flex min-w-[160px] flex-col items-center text-center">
-              <div className="mb-2 rounded-lg border border-border bg-surface-muted px-4 py-3 text-sm font-semibold text-foreground">
+            <div className="flex min-w-[160px] flex-col items-center text-center max-md:min-w-[130px]">
+              <div className="mb-2 rounded-lg border border-border bg-surface-muted px-4 py-3 text-sm font-semibold text-foreground max-md:px-2 max-md:text-xs">
                 {s.label}
               </div>
               <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/50">
@@ -36,13 +37,13 @@ function GrowthLoop() {
 
       {/* Two concept cards */}
       <div className="grid gap-5 md:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <div className="mb-3 text-3xl">🔍</div>
           <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-primary">
             Stage 1: The Hook
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">AI Citation Checker</h3>
-          <p className="mb-4 text-sm leading-relaxed text-foreground/70">
+          <p className="mb-4 text-sm leading-[1.7] text-foreground/70">
             A single-page tool where anyone can paste a URL and instantly see whether that page is
             being cited by AI search platforms — ChatGPT, Perplexity, Gemini — and for which
             prompts. No signup required. Output is a simple, shareable scorecard.
@@ -52,13 +53,13 @@ function GrowthLoop() {
           </span>
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <div className="mb-3 text-3xl">📊</div>
           <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-primary">
             Stage 2: The Conversion
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">Full AI Visibility Audit</h3>
-          <p className="mb-4 text-sm leading-relaxed text-foreground/70">
+          <p className="mb-4 text-sm leading-[1.7] text-foreground/70">
             After checking a page, the user is prompted to see their full domain audit. They enter
             their domain and email, and receive a branded report comparing their site-wide AI
             citation rates against competitors. The report is designed to be shared with leadership
@@ -69,16 +70,16 @@ function GrowthLoop() {
           </span>
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
 /* ─── 2B: Prototype ─── */
 function PrototypeSection() {
   return (
-    <div className="mb-10">
+    <ScrollReveal className="mb-10">
       <SectionHeader>Try It</SectionHeader>
-      <p className="mb-6 text-sm leading-relaxed text-foreground/80">
+      <p className="mb-6 text-sm leading-[1.7] text-foreground/80">
         This is a working prototype of the Citation Checker. Enter a URL to see how it works.
       </p>
       <div className="relative rounded-xl border-2 border-dashed border-primary/30 bg-card p-8 shadow-card">
@@ -89,24 +90,24 @@ function PrototypeSection() {
           <CitationChecker />
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
 /* ─── 2C: Target Audience ─── */
 function TargetAudience() {
   return (
-    <div className="mb-10">
+    <ScrollReveal className="mb-10">
       <SectionHeader>Who This Targets</SectionHeader>
       <div className="grid gap-5 md:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-primary">
             Primary
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">
             Content/SEO Leads at Mid-Market & Enterprise
           </h3>
-          <p className="text-sm leading-relaxed text-foreground/70">
+          <p className="text-sm leading-[1.7] text-foreground/70">
             The people who own organic traffic and are starting to hear from their CMO: "What's our
             AI search strategy?" They're under pressure to answer a question they don't yet have
             tools for. The Citation Checker gives them a concrete data point. The Audit gives them
@@ -114,21 +115,21 @@ function TargetAudience() {
             here's a platform that can close it."
           </p>
         </div>
-        <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/50">
             Secondary
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">
             Agency Leads & Consultants
           </h3>
-          <p className="text-sm leading-relaxed text-foreground/70">
+          <p className="text-sm leading-[1.7] text-foreground/70">
             People who manage content strategy for multiple clients. The Checker becomes a
             prospecting tool — run it on a client's site, share the results, and use it to justify
             an AirOps-powered engagement.
           </p>
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
@@ -162,21 +163,21 @@ const channels = [
 
 function Distribution() {
   return (
-    <div className="mb-10">
+    <ScrollReveal className="mb-10">
       <SectionHeader>Distribution Plan</SectionHeader>
       <div className="grid gap-4 sm:grid-cols-2">
         {channels.map((ch) => (
-          <div key={ch.title} className="rounded-xl border border-border bg-card p-5 shadow-card">
+          <div key={ch.title} className="rounded-xl border border-border bg-card p-5 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
             <div className="mb-2 text-2xl">{ch.icon}</div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">{ch.title}</h3>
-            <p className="mb-3 text-[13px] leading-relaxed text-foreground/70">{ch.desc}</p>
+            <p className="mb-3 text-[13px] leading-[1.7] text-foreground/70">{ch.desc}</p>
             <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-foreground/50">
               {ch.tag}
             </span>
           </div>
         ))}
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
@@ -223,16 +224,16 @@ const phases = [
 
 function Sequencing() {
   return (
-    <div className="mb-10">
+    <ScrollReveal className="mb-10">
       <SectionHeader>Sequence of Moves</SectionHeader>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {phases.map((phase, i) => (
-          <div key={i} className="relative rounded-xl border border-border bg-card p-5 shadow-card">
+          <div key={i} className="relative rounded-xl border border-border bg-card p-5 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
             <div className="mb-1 font-mono text-xs font-semibold text-primary">{phase.weeks}</div>
             <h3 className="mb-3 text-sm font-semibold text-foreground">{phase.title}</h3>
             <ul className="flex flex-col gap-1.5">
               {phase.items.map((item, j) => (
-                <li key={j} className="flex items-start gap-2 text-[13px] leading-relaxed text-foreground/70">
+                <li key={j} className="flex items-start gap-2 text-[13px] leading-[1.7] text-foreground/70">
                   <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
                   {item}
                 </li>
@@ -244,17 +245,17 @@ function Sequencing() {
           </div>
         ))}
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
 /* ─── 2F: Prioritization ─── */
 function Prioritization() {
   return (
-    <div>
+    <ScrollReveal>
       <SectionHeader>Prioritization</SectionHeader>
       <div className="grid gap-5 md:grid-cols-2">
-        <div className="rounded-xl border-l-4 border-l-primary border-t border-r border-b border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border-l-4 border-l-primary border-t border-r border-b border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-primary">
             Test First (Weeks 1–4)
           </h3>
@@ -264,7 +265,7 @@ function Prioritization() {
               "What's the optimal gate timing: after 1 check vs. 3 checks vs. ungated audit?",
               "Does the pre-populated onboarding path improve activation vs. cold signups?",
             ].map((q, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-foreground/70">
+              <li key={i} className="flex items-start gap-2 text-sm leading-[1.7] text-foreground/70">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                 {q}
               </li>
@@ -272,7 +273,7 @@ function Prioritization() {
           </ul>
         </div>
 
-        <div className="rounded-xl border-l-4 border-l-border border-t border-r border-b border-border bg-card p-6 shadow-card">
+        <div className="rounded-xl border-l-4 border-l-border border-t border-r border-b border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/40">
             Save for Later
           </h3>
@@ -283,7 +284,7 @@ function Prioritization() {
               "Agency/multi-domain features",
               "Competitive leaderboard by industry",
             ].map((q, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-foreground/70">
+              <li key={i} className="flex items-start gap-2 text-sm leading-[1.7] text-foreground/70">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground/20" />
                 {q}
               </li>
@@ -291,7 +292,7 @@ function Prioritization() {
           </ul>
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
 
