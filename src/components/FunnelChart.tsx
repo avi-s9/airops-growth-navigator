@@ -71,16 +71,25 @@ export default function FunnelChart() {
       </div>
 
       {/* Chart */}
-      <div className="relative flex items-end gap-1" style={{ height: 280, paddingBottom: 40 }}>
+      <div className="relative mt-2" style={{ height: 320 }}>
+        {/* Grid lines */}
+        {[0, 25, 50, 75, 100].map((v) => (
+          <div
+            key={v}
+            className="absolute left-12 right-0 border-t border-border/50"
+            style={{ top: `${((100 - v) / 100) * 240}px` }}
+          />
+        ))}
+
         {/* Y-axis */}
-        <div className="absolute left-0 top-0 bottom-10 flex w-10 flex-col justify-between">
+        <div className="absolute left-0 top-0 flex w-10 flex-col justify-between" style={{ height: 240 }}>
           {[100, 75, 50, 25, 0].map((v) => (
             <span key={v} className="text-right font-mono text-[11px] text-text-secondary">{v}%</span>
           ))}
         </div>
 
         {/* Bars */}
-        <div className="ml-12 flex flex-1 items-end gap-1.5" style={{ height: 240 }}>
+        <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: 240, top: 0 }}>
           {funnelData.map((item) => {
             const isHovered = hovered === item.step;
             const isFiltered = selectedZone && item.zone !== selectedZone;
