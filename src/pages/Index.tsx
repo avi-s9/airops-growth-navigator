@@ -4,6 +4,7 @@ import FunnelChart from "@/components/FunnelChart";
 import BlockerCards from "@/components/BlockerCards";
 import RedesignedFlow from "@/components/RedesignedFlow";
 import ExperimentCards from "@/components/ExperimentCards";
+import GrowthEngine from "@/components/GrowthEngine";
 
 const SectionHeader = ({ children }: { children: React.ReactNode }) => (
   <h2 className="mb-6 font-display text-[28px] text-foreground">{children}</h2>
@@ -67,30 +68,10 @@ export default function Index() {
       {/* Section 2: Growth Engine */}
       <section id="growth-engine" className="scroll-mt-16 px-6 py-16">
         <div className="mx-auto max-w-content">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+          <p className="mb-12 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Part 2
           </p>
-          <SectionHeader>Self-Serve Growth Engine</SectionHeader>
-          <div className="rounded-xl border border-border bg-card p-8 shadow-card">
-            <p className="text-sm leading-relaxed text-foreground/80">
-              The growth engine section builds on the activation improvements above to create a
-              sustainable top-of-funnel flywheel. By turning every activated user's content into
-              a distribution channel — through public content showcases, "Powered by AirOps" attribution,
-              and community-driven templates — AirOps can compound organic growth alongside paid acquisition.
-            </p>
-            <div className="mt-6 grid grid-cols-3 gap-4">
-              {[
-                { title: "Content Showcases", desc: "Published articles become public case studies that drive organic SEO traffic back to AirOps." },
-                { title: "Attribution Loop", desc: "\"Powered by AirOps\" links on generated content create a passive referral channel." },
-                { title: "Template Marketplace", desc: "User-created workflow templates reduce time-to-value for new users." },
-              ].map((item) => (
-                <div key={item.title} className="rounded-lg border border-border bg-surface-muted p-4">
-                  <div className="mb-1.5 text-sm font-semibold text-foreground">{item.title}</div>
-                  <div className="text-xs leading-relaxed text-text-secondary">{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <GrowthEngine />
         </div>
       </section>
 
