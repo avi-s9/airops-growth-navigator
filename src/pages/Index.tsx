@@ -4,6 +4,7 @@ import FunnelChart from "@/components/FunnelChart";
 import BlockerCards from "@/components/BlockerCards";
 import RedesignedFlow from "@/components/RedesignedFlow";
 import ExperimentCards from "@/components/ExperimentCards";
+import GrowthEngine from "@/components/GrowthEngine";
 
 const SectionHeader = ({ children }: { children: React.ReactNode }) => (
   <h2 className="mb-6 font-display text-[28px] text-foreground">{children}</h2>
