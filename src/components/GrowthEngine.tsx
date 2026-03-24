@@ -279,7 +279,7 @@ function Prioritization() {
           <ul className="mt-3 flex flex-col gap-2.5">
             {[
               "Embeddable widget version (needs partnership/BD effort)",
-              "Automated weekly monitoring emails ("Your AI visibility changed this week")",
+              'Automated weekly monitoring emails ("Your AI visibility changed this week")',
               "Agency/multi-domain features",
               "Competitive leaderboard by industry",
             ].map((q, i) => (
