@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const funnelData = [
   { step: 1, name: "Create Workspace", users: 337, pct: 100, dropoff: 0, dropoffPct: 0, time: "3s", zone: null, hypothesis: null },
@@ -40,6 +41,7 @@ const getBarBg = (zone: Zone | null) => {
 export default function FunnelChart() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [selectedZone, setSelectedZone] = useState<Zone | null>(null);
+  const { ref: chartRef, isVisible: chartVisible } = useScrollReveal({ threshold: 0.15 });
 
   return (
     <div>
@@ -47,7 +49,7 @@ export default function FunnelChart() {
       <div className="mb-6 flex flex-wrap gap-3">
         <button
           onClick={() => setSelectedZone(null)}
-          className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+          className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
             selectedZone === null
               ? "border-foreground bg-foreground text-card"
               : "border-border bg-card text-text-secondary hover:text-foreground"
@@ -59,7 +61,7 @@ export default function FunnelChart() {
           <button
             key={key}
             onClick={() => setSelectedZone(selectedZone === key ? null : key)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${val.textClass} ${
+            className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${val.textClass} ${
               selectedZone === key
                 ? `${val.bgClass} ${val.borderClass} border-2`
                 : `border-border bg-card`
@@ -71,7 +73,7 @@ export default function FunnelChart() {
       </div>
 
       {/* Chart */}
-      <div className="relative mt-2" style={{ height: 320 }}>
+      <div ref={chartRef} className="relative mt-2 overflow-x-auto" style={{ height: 320 }}>
         {/* Grid lines */}
         {[0, 25, 50, 75, 100].map((v) => (
           <div
@@ -90,7 +92,7 @@ export default function FunnelChart() {
 
         {/* Bars */}
         <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: 240, top: 0 }}>
-          {funnelData.map((item) => {
+          {funnelData.map((item, idx) => {
             const isHovered = hovered === item.step;
             const isFiltered = selectedZone && item.zone !== selectedZone;
             const barHeight = (item.pct / 100) * 240;
@@ -101,7 +103,7 @@ export default function FunnelChart() {
               <div
                 key={item.step}
                 className="flex flex-1 flex-col items-center transition-opacity"
-                style={{ opacity: isFiltered ? 0.15 : 1 }}
+                style={{ opacity: isFiltered ? 0.15 : 1, minWidth: 40 }}
                 onMouseEnter={() => setHovered(item.step)}
                 onMouseLeave={() => setHovered(null)}
               >
@@ -112,13 +114,14 @@ export default function FunnelChart() {
                   {item.pct}%
                 </span>
                 <div
-                  className="relative w-full max-w-[56px] rounded-t transition-all"
+                  className="relative w-full max-w-[56px] rounded-t transition-all duration-300 ease-out"
                   style={{
-                    height: barHeight,
+                    height: chartVisible ? barHeight : 0,
                     backgroundColor: isHovered ? barColor : barBg,
                     border: `1.5px solid ${barColor}`,
                     cursor: item.hypothesis ? "pointer" : "default",
                     transform: isHovered ? "scaleX(1.06)" : "scaleX(1)",
+                    transitionDelay: chartVisible ? `${idx * 40}ms` : "0ms",
                   }}
                 >
                   {item.dropoffPct > 5 && (
@@ -151,7 +154,7 @@ export default function FunnelChart() {
                 borderColor: zc ? getBarColor(zone) : "#E5E7EB",
               }}
             >
-              <div className="mb-3 flex items-start justify-between">
+              <div className="mb-3 flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                     Step {item.step}
@@ -172,7 +175,7 @@ export default function FunnelChart() {
                 </div>
               </div>
               {item.hypothesis && (
-                <p className="mt-0 border-t border-foreground/10 pt-3 text-sm leading-relaxed text-foreground/80">
+                <p className="mt-0 border-t border-foreground/10 pt-3 text-sm leading-[1.7] text-foreground/80">
                   <span className="font-semibold">Hypothesis:</span> {item.hypothesis}
                 </p>
               )}
@@ -194,7 +197,7 @@ export default function FunnelChart() {
       </div>
 
       {/* Summary zone cards */}
-      <div className="mt-6 grid grid-cols-3 gap-4">
+      <div className="mt-6 grid grid-cols-3 gap-4 max-md:grid-cols-1">
         {([
           { zone: "trust" as Zone, loss: "23%", steps: "Steps 3–5", desc: "Value is backloaded — users give input for 5 steps before seeing anything back" },
           { zone: "tollbooth" as Zone, loss: "18%", steps: "Steps 6–8", desc: "Unnecessary gates that ask for permission or premature decisions" },
@@ -205,7 +208,7 @@ export default function FunnelChart() {
             <div
               key={z.zone}
               onClick={() => setSelectedZone(selectedZone === z.zone ? null : z.zone)}
-              className={`cursor-pointer rounded-xl border p-4 transition-shadow hover:shadow-card-hover ${zc.bgClass} ${zc.borderClass}`}
+              className={`cursor-pointer rounded-xl border p-4 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover ${zc.bgClass} ${zc.borderClass}`}
             >
               <div className={`text-[11px] font-bold uppercase tracking-wider ${zc.textClass}`}>
                 {zc.label}
@@ -216,7 +219,7 @@ export default function FunnelChart() {
               <div className={`text-xs ${zc.textClass} opacity-80 mb-1.5`}>
                 drop-off at {z.steps}
               </div>
-              <div className="text-[13px] leading-snug text-foreground/70">{z.desc}</div>
+              <div className="text-[13px] leading-[1.7] text-foreground/70">{z.desc}</div>
             </div>
           );
         })}

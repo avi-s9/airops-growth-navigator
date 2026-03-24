@@ -1,3 +1,5 @@
+import ScrollReveal from "./ScrollReveal";
+
 type Zone = "trust" | "tollbooth" | "lastmile";
 
 const blockers = [
@@ -43,33 +45,35 @@ const blockers = [
   },
 ];
 
-const zoneStyles: Record<Zone, { bar: string; pill: string; pillText: string }> = {
-  trust: { bar: "bg-zone-trust", pill: "bg-zone-trust-bg border-zone-trust text-zone-trust-text", pillText: "text-zone-trust-text" },
-  tollbooth: { bar: "bg-zone-tollbooth", pill: "bg-zone-tollbooth-bg border-zone-tollbooth text-zone-tollbooth-text", pillText: "text-zone-tollbooth-text" },
-  lastmile: { bar: "bg-zone-lastmile", pill: "bg-zone-lastmile-bg border-zone-lastmile text-zone-lastmile-text", pillText: "text-zone-lastmile-text" },
+const zoneStyles: Record<Zone, { bar: string; barHover: string; pill: string; pillText: string }> = {
+  trust: { bar: "bg-zone-trust", barHover: "group-hover:w-2.5", pill: "bg-zone-trust-bg border-zone-trust text-zone-trust-text", pillText: "text-zone-trust-text" },
+  tollbooth: { bar: "bg-zone-tollbooth", barHover: "group-hover:w-2.5", pill: "bg-zone-tollbooth-bg border-zone-tollbooth text-zone-tollbooth-text", pillText: "text-zone-tollbooth-text" },
+  lastmile: { bar: "bg-zone-lastmile", barHover: "group-hover:w-2.5", pill: "bg-zone-lastmile-bg border-zone-lastmile text-zone-lastmile-text", pillText: "text-zone-lastmile-text" },
 };
 
 export default function BlockerCards() {
   return (
     <div className="flex flex-col gap-4">
-      {blockers.map((b) => {
+      {blockers.map((b, i) => {
         const s = zoneStyles[b.zone];
         return (
-          <div key={b.num} className="flex overflow-hidden rounded-xl border border-border bg-card shadow-card">
-            <div className={`w-1.5 flex-shrink-0 ${s.bar}`} />
-            <div className="flex-1 p-5">
-              <div className="mb-2 flex items-center gap-3">
-                <span className="text-base font-bold text-foreground">
-                  {b.num}. {b.title}
-                </span>
-                <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
-                  {b.zoneLabel}
-                </span>
+          <ScrollReveal key={b.num} delay={i * 60}>
+            <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
+              <div className={`w-1.5 flex-shrink-0 transition-all duration-200 ${s.bar} ${s.barHover}`} />
+              <div className="flex-1 p-5">
+                <div className="mb-2 flex flex-wrap items-center gap-3">
+                  <span className="text-base font-bold text-foreground">
+                    {b.num}. {b.title}
+                  </span>
+                  <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
+                    {b.zoneLabel}
+                  </span>
+                </div>
+                <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
+                <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
               </div>
-              <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
-              <p className="text-sm leading-relaxed text-foreground/80">{b.text}</p>
             </div>
-          </div>
+          </ScrollReveal>
         );
       })}
     </div>

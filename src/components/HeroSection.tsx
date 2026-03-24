@@ -1,3 +1,5 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const stats = [
   { value: "337 → 139", label: "Users reaching aha moment" },
   { value: "41.3%", label: "Current activation rate" },
@@ -5,31 +7,46 @@ const stats = [
 ];
 
 export default function HeroSection() {
-  return (
-    <section className="px-6 pb-16 pt-20">
-      <div className="mx-auto max-w-content">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-          Growth Product Manager Case Study
-        </p>
-        <h1 className="font-display text-[44px] leading-tight text-foreground">
-          Getting More Users to the Aha Moment
-        </h1>
-        <p className="mt-4 max-w-[680px] text-lg leading-relaxed text-text-secondary">
-          An analysis of AirOps' onboarding funnel, a redesigned activation flow,
-          and a self-serve growth engine to drive top-of-funnel awareness.
-        </p>
-        <p className="mt-3 text-sm text-text-secondary">Avi — March 2026</p>
+  const { ref, isVisible } = useScrollReveal({ threshold: 0.05 });
 
-        <div className="mt-10 grid grid-cols-3 gap-4">
-          {stats.map((s) => (
+  return (
+    <section ref={ref} className="px-6 pb-16 pt-20">
+      <div className="mx-auto max-w-content">
+        <div
+          className="transition-all duration-[600ms] ease-out"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+          }}
+        >
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            Growth Product Manager Case Study
+          </p>
+          <h1 className="font-display text-[44px] leading-tight tracking-[-0.02em] text-foreground max-md:text-[32px]">
+            Getting More Users to the Aha Moment
+          </h1>
+          <p className="mt-4 max-w-[680px] text-lg leading-[1.7] text-text-secondary max-md:text-base">
+            An analysis of AirOps' onboarding funnel, a redesigned activation flow,
+            and a self-serve growth engine to drive top-of-funnel awareness.
+          </p>
+          <p className="mt-3 text-sm text-text-secondary">Avi — March 2026</p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-3 gap-4 max-md:grid-cols-1">
+          {stats.map((s, i) => (
             <div
               key={s.label}
-              className="rounded-lg border border-border bg-card p-5 shadow-card"
+              className="rounded-lg border border-border bg-card p-5 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.4s ease-out ${i * 100}ms, transform 0.4s ease-out ${i * 100}ms`,
+              }}
             >
               <div className="font-mono text-2xl font-bold text-foreground">
                 {s.value}
               </div>
-              <div className="mt-1 text-sm text-text-secondary">{s.label}</div>
+              <div className="mt-1 text-sm leading-[1.7] text-text-secondary">{s.label}</div>
             </div>
           ))}
         </div>
