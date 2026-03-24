@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const thresholds = [
   {
@@ -88,7 +89,6 @@ const zoneStyles = {
     border: "border-primary/30",
     text: "text-primary",
     activeBorder: "border-primary",
-    gaugeBar: "bg-primary/15",
     detailBg: "bg-primary/5",
     detailBorder: "border-primary/20",
   },
@@ -97,7 +97,6 @@ const zoneStyles = {
     border: "border-zone-trust/30",
     text: "text-zone-trust-text",
     activeBorder: "border-zone-trust",
-    gaugeBar: "bg-zone-trust-bg",
     detailBg: "bg-zone-trust-bg",
     detailBorder: "border-zone-trust/30",
   },
@@ -106,7 +105,6 @@ const zoneStyles = {
     border: "border-zone-tollbooth/30",
     text: "text-zone-tollbooth-text",
     activeBorder: "border-zone-tollbooth",
-    gaugeBar: "bg-zone-tollbooth-bg",
     detailBg: "bg-zone-tollbooth-bg",
     detailBorder: "border-zone-tollbooth/30",
   },
@@ -115,6 +113,7 @@ const zoneStyles = {
 export default function InvestmentDashboard() {
   const [activeThreshold, setActiveThreshold] = useState<"green" | "yellow" | "red">("green");
   const [showResources, setShowResources] = useState(false);
+  const { ref: gaugeRef, isVisible: gaugeVisible } = useScrollReveal({ threshold: 0.3 });
 
   const active = thresholds.find((t) => t.key === activeThreshold)!;
   const styles = zoneStyles[activeThreshold];
@@ -126,44 +125,62 @@ export default function InvestmentDashboard() {
         <div className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em] text-foreground/40">
           Primary Success Metric
         </div>
-        <div className="mb-1 font-display text-[22px] text-foreground">
+        <div className="mb-1 font-display text-[22px] tracking-[-0.02em] text-foreground">
           Activated Trial Users / Month
         </div>
         <div className="text-sm text-foreground/60">
           from the Checker → Audit → Trial channel
         </div>
 
-        {/* Mini gauge */}
-        <div className="mx-auto mt-5 flex max-w-[500px] items-center gap-0">
+        {/* Mini gauge with grow animation */}
+        <div
+          ref={gaugeRef}
+          className="mx-auto mt-5 flex max-w-[500px] items-center gap-0 overflow-hidden rounded-lg"
+        >
           <button
             onClick={() => setActiveThreshold("red")}
-            className={`flex h-8 flex-[4] items-center justify-center rounded-l-lg text-[13px] font-semibold transition-all ${
+            className={`flex h-8 items-center justify-center text-[13px] font-semibold transition-all duration-500 ease-out ${
               activeThreshold === "red"
                 ? "bg-zone-tollbooth-bg text-zone-tollbooth-text ring-2 ring-zone-tollbooth"
                 : "bg-zone-tollbooth-bg/60 text-zone-tollbooth-text/70 hover:bg-zone-tollbooth-bg"
             }`}
+            style={{
+              flex: gaugeVisible ? 4 : 0,
+              transitionDelay: "0ms",
+              cursor: "pointer",
+            }}
           >
-            &lt; 4
+            {gaugeVisible && <>&lt; 4</>}
           </button>
           <button
             onClick={() => setActiveThreshold("yellow")}
-            className={`flex h-8 flex-[6] items-center justify-center text-[13px] font-semibold transition-all ${
+            className={`flex h-8 items-center justify-center text-[13px] font-semibold transition-all duration-500 ease-out ${
               activeThreshold === "yellow"
                 ? "bg-zone-trust-bg text-zone-trust-text ring-2 ring-zone-trust"
                 : "bg-zone-trust-bg/60 text-zone-trust-text/70 hover:bg-zone-trust-bg"
             }`}
+            style={{
+              flex: gaugeVisible ? 6 : 0,
+              transitionDelay: "150ms",
+              cursor: "pointer",
+            }}
           >
-            4 – 9
+            {gaugeVisible && <>4 – 9</>}
           </button>
           <button
             onClick={() => setActiveThreshold("green")}
-            className={`flex h-8 flex-[10] items-center justify-center rounded-r-lg text-[13px] font-semibold transition-all ${
+            className={`flex h-8 items-center justify-center text-[13px] font-semibold transition-all duration-500 ease-out ${
               activeThreshold === "green"
                 ? "bg-primary/15 text-accent-dark ring-2 ring-primary"
                 : "bg-primary/10 text-accent-dark/70 hover:bg-primary/15"
             }`}
+            style={{
+              flex: gaugeVisible ? 10 : 0,
+              transitionDelay: "300ms",
+              cursor: "pointer",
+            }}
           >
-            ≥ 10
+            {gaugeVisible && <>≥ 10</>}
           </button>
         </div>
         <div className="mt-2 text-[11px] text-foreground/40">
@@ -172,7 +189,7 @@ export default function InvestmentDashboard() {
       </div>
 
       {/* Threshold Tabs */}
-      <div className="mb-5 flex gap-2">
+      <div className="mb-5 flex gap-2 max-md:flex-col">
         {thresholds.map((t) => {
           const s = zoneStyles[t.zone];
           const isActive = activeThreshold === t.key;
@@ -180,7 +197,7 @@ export default function InvestmentDashboard() {
             <button
               key={t.key}
               onClick={() => setActiveThreshold(t.key as "green" | "yellow" | "red")}
-              className={`flex flex-1 flex-col items-center rounded-xl border px-4 py-3 text-center transition-all ${
+              className={`flex flex-1 cursor-pointer flex-col items-center rounded-xl border px-4 py-3 text-center transition-all ${
                 isActive ? `${s.bg} ${s.activeBorder} border-2` : "border-border bg-card hover:bg-surface-muted"
               }`}
             >
@@ -205,7 +222,7 @@ export default function InvestmentDashboard() {
           <div className="text-xs text-foreground/50">{active.timeframe}</div>
         </div>
 
-        <p className="mb-4 text-sm leading-relaxed text-foreground/80">{active.description}</p>
+        <p className="mb-4 text-sm leading-[1.7] text-foreground/80">{active.description}</p>
 
         {/* Diagnostics */}
         <div className="mb-2 text-xs font-bold uppercase tracking-[0.05em] text-foreground/50">
@@ -215,7 +232,7 @@ export default function InvestmentDashboard() {
           {active.diagnostics.map((d, i) => (
             <div
               key={i}
-              className="flex items-center justify-between rounded-lg border border-foreground/[0.06] bg-card/60 px-3.5 py-2.5"
+              className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-foreground/[0.06] bg-card/60 px-3.5 py-2.5"
             >
               <div className="flex items-center gap-3">
                 <span className="min-w-[130px] text-sm font-semibold text-foreground">{d.metric}</span>
@@ -229,7 +246,7 @@ export default function InvestmentDashboard() {
         {/* Decision */}
         <div className={`rounded-lg border p-3.5 ${styles.detailBorder} bg-card/70`}>
           <div className={`mb-1 text-xs font-bold uppercase tracking-[0.05em] ${styles.text}`}>Decision</div>
-          <p className="text-sm leading-relaxed text-foreground/80">{active.action}</p>
+          <p className="text-sm leading-[1.7] text-foreground/80">{active.action}</p>
         </div>
       </div>
 
@@ -267,13 +284,13 @@ export default function InvestmentDashboard() {
                 <div className="flex flex-col gap-2">
                   {cat.items.map((item) => (
                     <div key={item.role} className="rounded-lg border border-primary/10 bg-card/80 p-3">
-                      <div className="mb-1 flex items-center justify-between">
+                      <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
                         <span className="text-sm font-semibold text-foreground">{item.role}</span>
                         <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-accent-dark">
                           {item.allocation}
                         </span>
                       </div>
-                      <div className="text-[13px] leading-snug text-foreground/60">{item.purpose}</div>
+                      <div className="text-[13px] leading-[1.7] text-foreground/60">{item.purpose}</div>
                     </div>
                   ))}
                 </div>
@@ -283,7 +300,7 @@ export default function InvestmentDashboard() {
             {/* ROI Summary */}
             <div className="mt-3 rounded-lg bg-gradient-to-br from-accent-dark to-foreground p-4 text-primary-foreground">
               <div className="mb-2 text-sm font-bold">Expected ROI</div>
-              <div className="text-[13px] leading-relaxed opacity-90">
+              <div className="text-[13px] leading-[1.7] opacity-90">
                 1,000 Checker users/mo → 200 Audits → 24 trials → 10 activated users. At AirOps' mid-market contract values, 10 activated users/month from a ~$10K/month channel is strong unit economics — and it compounds as organic distribution scales while costs stay fixed. Break-even within 3–4 months. Positive ROI by month 5–6.
               </div>
             </div>
