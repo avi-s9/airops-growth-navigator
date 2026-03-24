@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 interface CitationData {
   cited: boolean;
@@ -60,6 +60,10 @@ const platforms = [
   { key: "gemini", name: "Gemini", icon: "◆" },
 ];
 
+function cleanUrl(raw: string): string {
+  return raw.trim().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+}
+
 export default function CitationChecker() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -67,15 +71,17 @@ export default function CitationChecker() {
   const [loadingStep, setLoadingStep] = useState(0);
 
   const loadingSteps = [
-    "Scanning AI search platforms...",
-    "Checking ChatGPT citations...",
-    "Checking Perplexity citations...",
-    "Checking Gemini citations...",
-    "Generating your report...",
+    "Scanning AI search platforms…",
+    "Checking ChatGPT citations…",
+    "Checking Perplexity citations…",
+    "Checking Gemini citations…",
+    "Generating your report…",
   ];
 
-  const handleCheck = () => {
-    if (!url.trim()) return;
+  const runCheck = useCallback((urlToCheck: string) => {
+    const cleaned = cleanUrl(urlToCheck);
+    if (!cleaned) return;
+
     setLoading(true);
     setResult(null);
     setLoadingStep(0);
@@ -92,19 +98,27 @@ export default function CitationChecker() {
 
     setTimeout(() => {
       clearInterval(stepInterval);
-      const cleanUrl = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
-      const matched = mockResults[cleanUrl] || {
+      const matched = mockResults[cleaned] || {
         ...defaultResult,
-        url: cleanUrl,
-        title: cleanUrl,
+        url: cleaned,
+        title: cleaned,
       };
       setResult(matched);
       setLoading(false);
     }, 3200);
+  }, []);
+
+  const handleCheck = () => {
+    runCheck(url);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") handleCheck();
+    if (e.key === "Enter" && url.trim()) handleCheck();
+  };
+
+  const handleExample = (example: string) => {
+    setUrl(example);
+    runCheck(example);
   };
 
   return (
@@ -114,16 +128,16 @@ export default function CitationChecker() {
         <div className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-primary">
           Free Tool
         </div>
-        <h3 className="mb-2 font-display text-[28px] text-foreground">
+        <h3 className="mb-2 font-display text-[28px] tracking-[-0.02em] text-foreground">
           AI Citation Checker
         </h3>
-        <p className="text-base text-foreground/60">
+        <p className="text-base leading-[1.7] text-foreground/60">
           Is your content being cited by AI search? Paste a URL to find out.
         </p>
       </div>
 
       {/* Input */}
-      <div className="mb-6 flex gap-2">
+      <div className="mb-6 flex gap-2 max-md:flex-col">
         <input
           type="text"
           placeholder="Enter a URL — e.g., ramp.com/pricing"
@@ -135,9 +149,9 @@ export default function CitationChecker() {
         <button
           onClick={handleCheck}
           disabled={loading || !url.trim()}
-          className="whitespace-nowrap rounded-lg bg-foreground px-6 py-3 text-[15px] font-semibold text-card transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="cursor-pointer whitespace-nowrap rounded-lg bg-foreground px-6 py-3 text-[15px] font-semibold text-card transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {loading ? "Checking..." : "Check Page"}
+          {loading ? "Checking…" : "Check Page"}
         </button>
       </div>
 
@@ -152,7 +166,7 @@ export default function CitationChecker() {
                 style={{ opacity: i <= loadingStep ? 1 : 0.3 }}
               >
                 <div
-                  className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold text-card transition-colors duration-300"
+                  className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold text-card transition-all duration-300"
                   style={{
                     backgroundColor:
                       i < loadingStep
@@ -160,12 +174,13 @@ export default function CitationChecker() {
                         : i === loadingStep
                         ? "hsl(var(--zone-trust))"
                         : "hsl(var(--border))",
+                    transform: i === loadingStep ? "scale(1.15)" : "scale(1)",
                   }}
                 >
                   {i < loadingStep ? "✓" : ""}
                 </div>
                 <span
-                  className={`text-sm ${
+                  className={`text-sm transition-all duration-200 ${
                     i === loadingStep ? "font-semibold text-foreground" : "text-foreground/60"
                   }`}
                 >
@@ -203,7 +218,7 @@ export default function CitationChecker() {
             {result.topCompetitor && (
               <div className="mt-3 inline-block rounded-lg bg-foreground/5 px-4 py-2 text-[13px] text-foreground/70">
                 {result.topCompetitor.name} is cited in{" "}
-                <strong>{result.topCompetitor.score}</strong> — that's a{" "}
+                <strong className="font-mono">{result.topCompetitor.score}</strong> — that's a{" "}
                 <strong className="text-destructive">
                   {result.topCompetitor.score - result.score}x gap
                 </strong>
@@ -257,13 +272,13 @@ export default function CitationChecker() {
             <div className="mb-4 text-sm text-card/70">
               See every page, every prompt, every competitor gap — free.
             </div>
-            <div className="mx-auto flex max-w-[400px] gap-2">
+            <div className="mx-auto flex max-w-[400px] gap-2 max-md:flex-col">
               <input
                 type="email"
                 placeholder="your@email.com"
                 className="flex-1 rounded-lg border border-card/20 bg-card/10 px-3.5 py-3 text-sm text-card outline-none placeholder:text-card/40"
               />
-              <button className="whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-foreground transition-opacity hover:opacity-90">
+              <button className="cursor-pointer whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-foreground transition-opacity hover:opacity-90">
                 Get Full Audit →
               </button>
             </div>
@@ -301,8 +316,8 @@ export default function CitationChecker() {
             {["ramp.com/pricing", "chime.com/banking"].map((example) => (
               <button
                 key={example}
-                onClick={() => setUrl(example)}
-                className="rounded-lg border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-[13px] text-primary transition-colors hover:bg-primary/10"
+                onClick={() => handleExample(example)}
+                className="cursor-pointer rounded-lg border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-[13px] text-primary transition-colors hover:bg-primary/10"
               >
                 {example}
               </button>
