@@ -80,7 +80,7 @@ export default function FunnelChart() {
         </div>
 
         {/* Bars */}
-        <div className="ml-12 flex flex-1 items-end gap-1.5" style={{ height: 240 }}>
+        <div className="absolute left-12 right-0 bottom-12 flex items-end gap-1.5" style={{ height: 240 }}>
           {funnelData.map((item) => {
             const isHovered = hovered === item.step;
             const isFiltered = selectedZone && item.zone !== selectedZone;
