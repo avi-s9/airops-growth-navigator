@@ -71,9 +71,9 @@ export default function FunnelChart() {
       </div>
 
       {/* Chart */}
-      <div className="relative flex items-end gap-1" style={{ height: 280, paddingBottom: 40 }}>
+      <div className="relative mt-2 overflow-visible" style={{ height: 320, paddingBottom: 48 }}>
         {/* Y-axis */}
-        <div className="absolute left-0 top-0 bottom-10 flex w-10 flex-col justify-between">
+        <div className="absolute left-0 top-0 flex w-10 flex-col justify-between" style={{ height: 240 }}>
           {[100, 75, 50, 25, 0].map((v) => (
             <span key={v} className="text-right font-mono text-[11px] text-text-secondary">{v}%</span>
           ))}
