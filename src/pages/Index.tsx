@@ -81,54 +81,45 @@ export default function Index() {
       {/* Section 3: Investment Framework */}
       <section id="investment" className="scroll-mt-16 px-6 py-16">
         <div className="mx-auto max-w-content">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+          <p className="mb-12 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Part 3
           </p>
-          <SectionHeader>Investment Framework</SectionHeader>
-          <div className="rounded-xl border border-border bg-card p-8 shadow-card">
-            <p className="mb-6 text-sm leading-relaxed text-foreground/80">
-              Prioritization framework based on expected impact, implementation effort, and confidence level.
-            </p>
-            <div className="overflow-hidden rounded-lg border border-border">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-surface-muted text-left">
-                    <th className="px-4 py-3 font-semibold text-foreground">Initiative</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Impact</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Effort</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Confidence</th>
-                    <th className="px-4 py-3 font-semibold text-foreground">Priority</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { name: "Auto-Execute First Workflow", impact: "High", effort: "Medium", confidence: "High", priority: "P0" },
-                    { name: "Post-Competitor Micro-Insight", impact: "Medium", effort: "Low", confidence: "Medium", priority: "P0" },
-                    { name: "Compress Tollbooth Steps", impact: "Medium", effort: "Low", confidence: "High", priority: "P1" },
-                    { name: "Reframe Benchmark", impact: "Medium", effort: "Medium", confidence: "Medium", priority: "P1" },
-                    { name: "Content Showcase + Attribution", impact: "High", effort: "High", confidence: "Medium", priority: "P2" },
-                  ].map((row, i) => (
-                    <tr key={i} className="border-t border-border">
-                      <td className="px-4 py-3 font-medium text-foreground">{row.name}</td>
-                      <td className="px-4 py-3 text-foreground/80">{row.impact}</td>
-                      <td className="px-4 py-3 text-foreground/80">{row.effort}</td>
-                      <td className="px-4 py-3 text-foreground/80">{row.confidence}</td>
-                      <td className="px-4 py-3">
-                        <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
-                          row.priority === "P0"
-                            ? "bg-primary/10 text-accent-dark"
-                            : row.priority === "P1"
-                            ? "bg-zone-trust-bg text-zone-trust-text"
-                            : "bg-muted text-muted-foreground"
-                        }`}>
-                          {row.priority}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <SectionHeader>Making the Call</SectionHeader>
+          <p className="mb-8 max-w-[720px] text-sm leading-relaxed text-foreground/80">
+            One primary metric determines success. Three diagnostics tell you where to focus.
+            Evaluation timeframe: 8 weeks post-public launch.
+          </p>
+
+          <InvestmentDashboard />
+
+          {/* ROI Model */}
+          <div className="mt-16">
+            <SectionHeader>ROI Model</SectionHeader>
+            <div className="mb-6 flex items-center justify-between gap-0 overflow-x-auto rounded-xl border border-border bg-card p-6 shadow-card">
+              {[
+                { value: "1,000", label: "Checker users/mo", pct: null },
+                { value: "200", label: "Audits", pct: "20%" },
+                { value: "24", label: "Trials", pct: "12%" },
+                { value: "10", label: "Activated Users", pct: "42%" },
+              ].map((stage, i) => (
+                <div key={i} className="flex items-center gap-0">
+                  {i > 0 && (
+                    <div className="flex flex-col items-center px-3">
+                      <span className="mb-1 font-mono text-xs font-semibold text-primary">{stage.pct}</span>
+                      <div className="text-foreground/30">→</div>
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center text-center">
+                    <span className="font-mono text-2xl font-bold text-foreground">{stage.value}</span>
+                    <span className="mt-1 text-xs text-foreground/50">{stage.label}</span>
+                  </div>
+                </div>
+              ))}
             </div>
+            <p className="text-sm leading-relaxed text-foreground/60">
+              At AirOps' mid-market contract values, 10 activated users/month from a ~$10K/month channel
+              is strong unit economics — and it compounds as organic distribution scales while costs stay fixed.
+            </p>
           </div>
         </div>
       </section>
