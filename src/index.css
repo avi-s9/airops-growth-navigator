@@ -87,3 +87,54 @@
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ─── Print Styles ─── */
+@media print {
+  html {
+    scroll-behavior: auto;
+  }
+
+  nav,
+  .fixed {
+    display: none !important;
+    position: static !important;
+  }
+
+  body {
+    font-size: 11pt;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Show all expandable content */
+  [style*="rotate(180deg)"],
+  [style*="rotate(0)"] {
+    display: none !important;
+  }
+
+  /* Remove shadows and reduce borders for clean print */
+  .shadow-card,
+  .shadow-card-hover {
+    box-shadow: none !important;
+  }
+
+  /* Ensure all scroll-reveal content is visible */
+  [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Remove hover transforms */
+  .hover\:-translate-y-0\.5:hover {
+    transform: none !important;
+  }
+
+  footer {
+    border-top: 1px solid #ddd;
+  }
+}

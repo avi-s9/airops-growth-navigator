@@ -139,8 +139,8 @@ export default function FunnelChart() {
         </div>
       </div>
 
-      {/* Hover detail card */}
-      <div className="mt-4 min-h-[140px]">
+      {/* Hover detail card — outside chart container to avoid clipping */}
+      <div className="mt-4 min-h-[140px] overflow-visible">
         {hovered !== null ? (() => {
           const item = funnelData.find((d) => d.step === hovered);
           if (!item) return null;
