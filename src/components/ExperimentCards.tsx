@@ -9,6 +9,7 @@ const experiments = [
     borderColor: "border-zone-lastmile",
     targetZone: "Last-Mile Cliff",
     collapsedTarget: "Target: lift Grid-to-Execute conversion from 72% to 85%+",
+    ahaLift: "Estimated overall activation lift: 41.3% to ~48.7%",
     hypothesis:
       'If we auto-trigger content generation for the highest-priority keyword during onboarding (while the user reviews Brand Kit), users will arrive at the Grid with content already generated, reducing the Step 11-to-12 drop from 28% to under 15%.',
     rationale:
