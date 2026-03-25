@@ -305,7 +305,7 @@ export default function CitationChecker() {
           {/* Prompts Detail */}
           {platforms.some((p) => result.citations[p.key].cited) && (
             <div className="mt-5">
-              <div className="mb-2 text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/40">
+              <div className="mb-2 text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/50">
                 Prompts where you're cited
               </div>
               {platforms.map((p) => {
