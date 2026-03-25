@@ -45,7 +45,7 @@ export default function ROICalculator() {
             )}
             <div className="flex flex-col items-center text-center">
               <span className="font-mono text-2xl font-bold text-foreground max-md:text-lg">{stage.value}</span>
-              <span className="mt-1 text-xs text-foreground/50 max-md:text-[10px]">{stage.label}</span>
+              <span className="mt-1 text-xs text-foreground/60 max-md:text-[10px]">{stage.label}</span>
             </div>
           </div>
         ))}
