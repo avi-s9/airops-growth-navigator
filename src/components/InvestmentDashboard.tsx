@@ -62,23 +62,23 @@ const resources = [
   {
     category: "Headcount",
     items: [
-      { role: "Full-Stack Growth Engineer", allocation: "1.0 FTE (dedicated)", purpose: "Owns the Checker and Audit end-to-end: public frontend, AI search API integrations, pre-populated onboarding bridge, funnel instrumentation." },
-      { role: "Product Designer", allocation: "0.5 FTE (shared)", purpose: "Audit report design, shareable output format, Checker to Audit to Trial conversion UX. Shifts to iteration after initial design sprint." },
-      { role: "Content/Growth Marketer", allocation: "0.5 FTE (shared)", purpose: 'Owns distribution: the "Top 100" report, community seeding, Product Hunt launch, and SEO landing pages.' },
+      { role: "Full-Stack Growth Engineer", allocation: "1.0 FTE (dedicated)", purpose: "Owns the Checker and Audit end-to-end. Frontend, API integrations, onboarding bridge, funnel instrumentation." },
+      { role: "Product Designer", allocation: "0.5 FTE (shared)", purpose: "Audit report design and conversion UX. Shifts to iteration after the initial design sprint." },
+      { role: "Content/Growth Marketer", allocation: "0.5 FTE (shared)", purpose: 'The Top 100 report, community seeding, Product Hunt launch, SEO landing pages.' },
     ],
   },
   {
     category: "Budget",
     items: [
-      { role: "LinkedIn Paid Ads", allocation: "$5-8K / month", purpose: "Targeting Content Director / VP Marketing titles at mid-market companies. Driving to the Checker, not AirOps directly. Test budget - scale or cut based on CPA." },
-      { role: "Product Hunt Launch", allocation: "$2-3K (one-time)", purpose: 'Promotional assets and campaign around the "Top 100 SaaS AI Visibility" report.' },
+      { role: "LinkedIn Paid Ads", allocation: "$5-8K / month", purpose: "Test budget targeting Content Director / VP Marketing titles. Scale or cut based on CPA." },
+      { role: "Product Hunt Launch", allocation: "$2-3K (one-time)", purpose: 'Promotional assets and launch campaign.' },
     ],
   },
   {
     category: "Engineering",
     items: [
-      { role: "AI Citation API Pipeline", allocation: "Critical dependency", purpose: "Scalable, real-time pipeline for checking citations across ChatGPT, Perplexity, and Gemini. The Checker needs to return results in under 10 seconds." },
-      { role: "Pre-populated Onboarding Bridge", allocation: "Highest-leverage investment", purpose: "Connects audit data (competitors, prompts, opportunities) into the existing onboarding so trial users skip Steps 1-5." },
+      { role: "AI Citation API Pipeline", allocation: "Critical dependency", purpose: "Real-time citation checking across ChatGPT, Perplexity, and Gemini. Results in under 10 seconds." },
+      { role: "Pre-populated Onboarding Bridge", allocation: "Highest-leverage investment", purpose: "Pipes audit data into onboarding so trial users skip Steps 1-5." },
     ],
   },
 ];
@@ -301,7 +301,7 @@ export default function InvestmentDashboard() {
             <div className="mt-3 rounded-lg bg-gradient-to-br from-accent-dark to-foreground p-4 text-primary-foreground">
               <div className="mb-2 text-sm font-bold">Expected ROI</div>
               <div className="text-[13px] leading-[1.7] opacity-90">
-                1,000 Checker users/mo leads to 200 Audits, then 24 trials, then 10 activated users. At AirOps' mid-market contract values, 10 activated users/month from a roughly $10K/month channel is strong unit economics - and it compounds as organic distribution scales while costs stay fixed. Break-even within 3-4 months. Positive ROI by month 5-6.
+                1,000 Checker users/mo leads to 200 Audits, 24 trials, 10 activated users. At mid-market contract values, that's a good return from a ~$10K/month channel, and it gets better over time as organic traffic grows. Break-even in 3-4 months.
               </div>
             </div>
           </div>

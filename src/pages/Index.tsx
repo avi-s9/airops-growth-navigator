@@ -35,11 +35,9 @@ export default function Index() {
             {/* 1A: Funnel */}
             <SectionHeader>The Funnel at a Glance</SectionHeader>
             <p className="mb-8 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
-              337 users enter the onboarding flow. Only 139 reach the aha moment - seeing
-              high-quality content generated in the Actions Grid. That's a{" "}
-              <strong>41.3% activation rate</strong>, with an average time-to-convert of{" "}
-              <strong>3h 35m</strong> suggesting most users aren't completing this in one
-              sitting. The drop-off falls into three problem zones.
+              337 users enter. 139 reach the aha moment. That's a{" "}
+              <strong>41.3% activation rate</strong> with a <strong>3h 35m</strong> average
+              time-to-convert. Here's where they drop off, why, and what to do about it.
             </p>
           </ScrollReveal>
           <FunnelChart />
@@ -98,8 +96,8 @@ export default function Index() {
             </p>
             <SectionHeader>Making the Call</SectionHeader>
             <p className="mb-8 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
-              One primary metric determines success. Three diagnostics tell you where to focus.
-              Evaluation timeframe: 8 weeks post-public launch.
+              One metric determines success. Three diagnostics tell you where to focus.
+              Evaluation window: 8 weeks post-launch.
             </p>
           </ScrollReveal>
 
