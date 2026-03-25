@@ -28,7 +28,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Step 5 - 11.3% drop, 46s",
-    text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both you and all your competitors, the headline 'Your competitors are outperforming you in AI Search' just feels wrong. You've put in 4 steps of effort - the Benchmark is supposed to be the first payoff. When the data is empty, it doesn't create urgency; it makes you doubt whether the platform actually works.",
+    text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both you and all your competitors, the headline 'Your competitors are outperforming you in AI Search' just feels wrong. You've put in 4 steps of effort - the Benchmark is supposed to be the first payoff. When the data is empty, it doesn't create urgency; it makes you doubt whether the platform actually works. I tested this with SSENSE - a brand with an established editorial and strong organic presence - and every single competitor, including ones like MatchesFashion that went bankrupt two years ago, showed 0%. When the data feels wrong, the whole platform loses credibility at the worst possible moment.",
     screenshots: [
       [
         {

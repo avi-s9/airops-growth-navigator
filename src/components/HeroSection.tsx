@@ -29,6 +29,7 @@ export default function HeroSection() {
             Why 59% of users drop off before seeing their first piece of generated content - and how to fix it.
           </p>
           <p className="mt-3 text-sm text-text-secondary">Avi - March 2026</p>
+          <p className="text-sm text-text-secondary">Tested using SSENSE (my former employer) as the onboarding case - a luxury fashion e-commerce brand with an active editorial program.</p>
         </div>
 
         <div className="mt-10 grid grid-cols-3 gap-4 max-md:grid-cols-1">
