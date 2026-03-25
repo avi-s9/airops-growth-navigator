@@ -296,7 +296,7 @@ export default function CitationChecker() {
               <p className="mb-3 text-sm text-foreground/60">
                 In production, you'd receive a full domain report within 2 minutes. Your competitors, prompts, and opportunities would pre-load into your AirOps trial - zero re-entry.
               </p>
-              <p className="text-xs text-foreground/40 italic">
+              <p className="text-xs text-foreground/50 italic">
                 This is where the self-serve funnel connects back to the onboarding flow from Section 1.
               </p>
             </div>
