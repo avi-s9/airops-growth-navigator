@@ -73,7 +73,7 @@ export default function FunnelChart() {
       </div>
 
       {/* Chart */}
-      <div>
+      <div className="overflow-x-auto">
         <div ref={chartRef} className="relative mt-2" style={{ height: 360, minWidth: 700 }}>
         {/* Grid lines */}
         {[0, 25, 50, 75, 100].map((v) => (
