@@ -146,7 +146,7 @@ export default function CitationChecker() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 rounded-lg border-2 border-border bg-card px-4 py-3 text-[15px] text-foreground outline-none transition-colors placeholder:text-foreground/40 focus:border-primary"
+          className="flex-1 rounded-lg border-2 border-border bg-card px-4 py-3 text-[15px] text-foreground outline-none transition-colors placeholder:text-foreground/50 focus:border-primary"
         />
         <button
           onClick={handleCheck}
