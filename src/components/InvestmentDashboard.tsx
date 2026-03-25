@@ -225,7 +225,7 @@ export default function InvestmentDashboard() {
         <p className="mb-4 text-sm leading-[1.7] text-foreground/80">{active.description}</p>
 
         {/* Diagnostics */}
-        <div className="mb-2 text-xs font-bold uppercase tracking-[0.05em] text-foreground/50">
+        <div className="mb-2 text-xs font-bold uppercase tracking-[0.05em] text-foreground/60">
           Diagnostic Indicators
         </div>
         <div className="mb-4 flex flex-col gap-1.5">
