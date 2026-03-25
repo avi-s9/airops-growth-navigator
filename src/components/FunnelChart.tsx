@@ -42,6 +42,9 @@ export default function FunnelChart() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [selectedZone, setSelectedZone] = useState<Zone | null>(null);
   const { ref: chartRef, isVisible: chartVisible } = useScrollReveal({ threshold: 0.15 });
+  const chartTopOffset = 52;
+  const chartHeight = 240;
+  const chartFrameHeight = 372;
 
   return (
     <div>
@@ -74,29 +77,29 @@ export default function FunnelChart() {
 
       {/* Chart */}
       <div className="overflow-x-auto">
-        <div ref={chartRef} className="relative mt-2" style={{ height: 360, minWidth: 700 }}>
+        <div ref={chartRef} className="relative mt-2" style={{ height: chartFrameHeight, minWidth: 700 }}>
         {/* Grid lines */}
         {[0, 25, 50, 75, 100].map((v) => (
           <div
             key={v}
             className="absolute left-12 right-0 border-t border-border/50"
-            style={{ top: `${((100 - v) / 100) * 240 + 40}px` }}
+            style={{ top: `${((100 - v) / 100) * chartHeight + chartTopOffset}px` }}
           />
         ))}
 
         {/* Y-axis */}
-        <div className="absolute left-0 top-[40px] flex w-10 flex-col justify-between" style={{ height: 240 }}>
+        <div className="absolute left-0 flex w-10 flex-col justify-between" style={{ top: chartTopOffset, height: chartHeight }}>
           {[100, 75, 50, 25, 0].map((v) => (
             <span key={v} className="text-right font-mono text-[11px] text-text-secondary">{v}%</span>
           ))}
         </div>
 
         {/* Bars */}
-        <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: 240, top: 40 }}>
+        <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: chartHeight, top: chartTopOffset }}>
           {funnelData.map((item, idx) => {
             const isHovered = hovered === item.step;
             const isFiltered = selectedZone && item.zone !== selectedZone;
-            const barHeight = (item.pct / 100) * 240;
+            const barHeight = (item.pct / 100) * chartHeight;
             const barColor = getBarColor(item.zone as Zone | null);
             const barBg = getBarBg(item.zone as Zone | null);
 
