@@ -40,7 +40,7 @@ export default function ROICalculator() {
             {i > 0 && (
               <div className="flex flex-col items-center px-3 max-md:px-1.5">
                 <span className="mb-1 font-mono text-xs font-semibold text-primary">{stage.pct}</span>
-                <div className="text-foreground/30">→</div>
+                <div className="text-foreground/40">→</div>
               </div>
             )}
             <div className="flex flex-col items-center text-center">
