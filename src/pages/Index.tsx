@@ -107,8 +107,7 @@ export default function Index() {
               <p className="mb-6 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
                 I ran SSENSE through the full onboarding. When it works, the output is genuinely impressive -
                 a 2,400-word article written in SSENSE's editorial voice, with sourced links, ready to publish.
-                The dashboard updated with real mention and citation rates. The problem isn't the output.
-                It's that most people never get to see it.
+                The dashboard updated with real mention and citation rates. The output is great. But 59% of users drop off before they ever reach it.
               </p>
               <p className="mb-5 max-w-[720px] text-sm leading-[1.7] text-foreground/70">
                 Quality here means on-brand voice, publishable with light edits, properly sourced links, and structured well enough that it's clearly better than starting from scratch. The SSENSE article hit all four.

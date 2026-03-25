@@ -48,7 +48,7 @@ const thresholds = [
     description:
       "The channel isn't producing enough value to justify even the current resource allocation. The diagnostics tell you whether this is something you can fix or something more fundamental.",
     diagnostics: [
-      { metric: "Checker to Audit", target: "< 10%", meaning: "The output isn't compelling - this is a product problem, not a conversion problem" },
+      { metric: "Checker to Audit", target: "< 10%", meaning: "The output isn't compelling enough to act on. No amount of funnel optimization fixes that" },
       { metric: "Audit to Trial", target: "< 5%", meaning: "People understand the problem but don't believe a self-serve tool will fix it" },
       { metric: "Share rate", target: "< 5%", meaning: "Nobody shares the report - you'd need to pay for every user forever" },
     ],
