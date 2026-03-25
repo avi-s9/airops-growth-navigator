@@ -38,6 +38,7 @@ const experiments = [
     borderColor: "border-zone-trust",
     targetZone: "Trust Erosion",
     collapsedTarget: "Target: lift mid-funnel completion from ~63% to ~72%",
+    ahaLift: "Estimated overall activation lift: 41.3% to ~47-50% (compounds with Experiment A)",
     hypothesis:
       'If we show users a single personalized competitive insight right after the Competitors step (e.g., "Farfetch is cited for 3 prompts where you\'re invisible"), mid-funnel completion from Step 3 to Step 10 will improve by 9-15%.',
     rationale:
