@@ -21,9 +21,9 @@ export default function ROICalculator() {
 
   const sliders = [
     { key: "checkerUsers" as const, label: "Checker users / month", min: 100, max: 5000, step: 100, suffix: "" },
-    { key: "checkerToAudit" as const, label: "Checker → Audit rate", min: 5, max: 40, step: 1, suffix: "%" },
-    { key: "auditToTrial" as const, label: "Audit → Trial rate", min: 2, max: 25, step: 1, suffix: "%" },
-    { key: "trialToActivated" as const, label: "Trial → Activated rate", min: 10, max: 60, step: 1, suffix: "%" },
+    { key: "checkerToAudit" as const, label: "Checker to Audit rate", min: 5, max: 40, step: 1, suffix: "%" },
+    { key: "auditToTrial" as const, label: "Audit to Trial rate", min: 2, max: 25, step: 1, suffix: "%" },
+    { key: "trialToActivated" as const, label: "Trial to Activated rate", min: 10, max: 60, step: 1, suffix: "%" },
   ];
 
   return (

@@ -12,12 +12,12 @@ const thresholds = [
     description:
       "The channel is producing real AirOps users at a rate that justifies scaling. Every stage of the funnel is working - the hook converts, the report drives adoption, and the viral loop is firing.",
     diagnostics: [
-      { metric: "Checker to Audit", target: "at least 20%", meaning: "The hook creates urgency" },
-      { metric: "Audit to Trial", target: "at least 12%", meaning: "The report drives adoption" },
-      { metric: "Share rate", target: "at least 15%", meaning: "The viral loop is self-sustaining" },
+      { metric: "Checker to Audit", target: "at least 20%", meaning: "People care enough to give their email" },
+      { metric: "Audit to Trial", target: "at least 12%", meaning: "The report makes them want to try the product, not just read about the problem" },
+      { metric: "Share rate", target: "at least 15%", meaning: "Reports are getting shared - growth isn't purely paid" },
     ],
     action:
-      "Request dedicated resources and scale distribution. The exact diagnostic mix matters less than the primary number - if you're hitting 10+ activated users through a different conversion path than expected, the funnel is working.",
+      "Request dedicated resources and scale distribution. Don't overthink the diagnostic split - if you're at 10+ activated users, the funnel works even if it's converting differently than you expected.",
     zone: "green" as const,
   },
   {
@@ -30,9 +30,9 @@ const thresholds = [
     description:
       "The channel is producing real users, but not enough to justify scaling yet. This is where you look at the diagnostics to figure out what's broken.",
     diagnostics: [
-      { metric: "Checker to Audit", target: "10-19%", meaning: "Hook is interesting, not compelling enough" },
-      { metric: "Audit to Trial", target: "5-11%", meaning: "Report creates awareness, not urgency" },
-      { metric: "Share rate", target: "8-14%", meaning: "Some sharing, not enough to compound" },
+      { metric: "Checker to Audit", target: "10-19%", meaning: "People find it interesting but not enough to hand over their email" },
+      { metric: "Audit to Trial", target: "5-11%", meaning: "They read the report but don't feel the need to act on it" },
+      { metric: "Share rate", target: "8-14%", meaning: "A few shares here and there, but not enough to drive organic growth" },
     ],
     action:
       "Give it 4 more weeks (Weeks 9-12) focused on the weakest diagnostic. If 2 diagnostics are green and 1 is yellow, keep iterating. If 2 are yellow and 1 is green, the concept needs more fundamental rethinking.",
@@ -48,9 +48,9 @@ const thresholds = [
     description:
       "The channel isn't producing enough value to justify even the current resource allocation. The diagnostics tell you whether this is something you can fix or something more fundamental.",
     diagnostics: [
-      { metric: "Checker to Audit", target: "< 10%", meaning: "Value problem - the insight doesn't create urgency" },
-      { metric: "Audit to Trial", target: "< 5%", meaning: "Awareness-to-action gap too wide for self-serve" },
-      { metric: "Share rate", target: "< 5%", meaning: "Viral loop is dead - growth requires only paid" },
+      { metric: "Checker to Audit", target: "< 10%", meaning: "The output isn't compelling - this is a product problem, not a conversion problem" },
+      { metric: "Audit to Trial", target: "< 5%", meaning: "People understand the problem but don't believe a self-serve tool will fix it" },
+      { metric: "Share rate", target: "< 5%", meaning: "Nobody shares the report - you'd need to pay for every user forever" },
     ],
     action:
       "If the primary metric is below threshold and the weakest diagnostic shows no improvement trend across Weeks 6-8, kill the project. Reallocate the team to the next growth bet (template gallery with compounding SEO dynamics).",

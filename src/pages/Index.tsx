@@ -105,10 +105,10 @@ export default function Index() {
                 What the aha moment actually looks like
               </h3>
               <p className="mb-6 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
-                I ran SSENSE through the full onboarding. When it works, the output is genuinely impressive —
+                I ran SSENSE through the full onboarding. When it works, the output is genuinely impressive -
                 a 2,400-word article written in SSENSE's editorial voice, with sourced links, ready to publish.
-                The dashboard updated with real mention and citation rates. The problem isn't the destination.
-                It's how few people get there.
+                The dashboard updated with real mention and citation rates. The problem isn't the output.
+                It's that most people never get to see it.
               </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <figure>
@@ -121,7 +121,7 @@ export default function Index() {
                     <img src={articleImg} alt="Generated article screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
                   </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
-                    The generated article — 2,400 words in SSENSE's editorial voice, with external links and citations.
+                    The generated article - 2,400 words in SSENSE's editorial voice, with sourced external links.
                   </figcaption>
                 </figure>
                 <figure>
@@ -134,7 +134,7 @@ export default function Index() {
                     <img src={dashboardImg} alt="SSENSE dashboard screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
                   </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
-                    The SSENSE dashboard after onboarding — 35.6% mention rate, 5.1% citation rate. Real data, once you get past the 0% during setup.
+                    The SSENSE dashboard after onboarding - 35.6% mention rate, 5.1% citation rate. These numbers were real, but they only showed up after I'd finished the full flow. During setup, everything said 0%.
                   </figcaption>
                 </figure>
               </div>

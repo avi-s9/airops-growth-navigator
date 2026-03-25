@@ -1,9 +1,9 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const stats = [
-  { value: "337 to 139", label: "Users reaching aha moment" },
+  { value: "337 to 139", label: "Users who generate their first article" },
   { value: "41.3%", label: "Current activation rate" },
-  { value: "3h 35m", label: "Avg time to convert" },
+  { value: "3h 35m", label: "Avg time to first article" },
 ];
 
 export default function HeroSection() {
