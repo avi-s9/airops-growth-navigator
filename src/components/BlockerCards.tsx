@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import ScrollReveal from "./ScrollReveal";
 import benchmarkImg from "@/assets/Benchmark_Results_Screen.png";
 import freeTrialImg from "@/assets/Free_Trial_CTA_Screen.png";
@@ -139,6 +139,50 @@ function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src:
 export default function BlockerCards() {
   const [expandedBlockers, setExpandedBlockers] = useState<Set<number>>(new Set());
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!lightboxSrc) {
+      lastFocusedElementRef.current?.focus();
+      return;
+    }
+
+    lastFocusedElementRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeButtonRef.current?.focus();
+  }, [lightboxSrc]);
+
+  const handleLightboxKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setLightboxSrc(null);
+      return;
+    }
+
+    if (event.key !== "Tab" || !lightboxRef.current) return;
+
+    const focusableElements = lightboxRef.current.querySelectorAll<HTMLElement>(
+      "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])",
+    );
+
+    if (focusableElements.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    const activeElement = document.activeElement as HTMLElement | null;
+
+    if (event.shiftKey && activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
 
   const toggleBlocker = (num: number) => {
     setExpandedBlockers((prev) => {
@@ -220,12 +264,18 @@ export default function BlockerCards() {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
           onClick={() => setLightboxSrc(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded screenshot"
+          onKeyDown={handleLightboxKeyDown}
         >
           <div
+            ref={lightboxRef}
             className="relative max-h-full max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
