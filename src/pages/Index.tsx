@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef, useCallback } from "react";
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import FunnelChart from "@/components/FunnelChart";
