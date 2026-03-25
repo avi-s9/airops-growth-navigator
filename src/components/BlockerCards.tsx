@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import benchmarkImg from "@/assets/Benchmark_Results_Screen.png";
 import freeTrialImg from "@/assets/Free_Trial_CTA_Screen.png";
@@ -107,10 +108,13 @@ const zoneStyles: Record<Zone, { bar: string; barHover: string; pill: string; pi
   lastmile: { bar: "bg-zone-lastmile", barHover: "group-hover:w-2.5", pill: "bg-zone-lastmile-bg border-zone-lastmile text-zone-lastmile-text", pillText: "text-zone-lastmile-text" },
 };
 
-function ScreenshotImage({ shot }: { shot: Screenshot }) {
+function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src: string) => void }) {
   return (
     <figure>
-      <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      <div
+        className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer hover:opacity-90 transition-opacity"
+        onClick={() => onExpand(shot.src)}
+      >
         <img
           src={shot.src}
           alt={shot.alt}
@@ -126,6 +130,8 @@ function ScreenshotImage({ shot }: { shot: Screenshot }) {
 }
 
 export default function BlockerCards() {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
   return (
     <div className="flex flex-col gap-4">
       {blockers.map((b, i) => {
@@ -156,7 +162,7 @@ export default function BlockerCards() {
                     }`}
                   >
                     {row.map((shot, si) => (
-                      <ScreenshotImage key={si} shot={shot} />
+                      <ScreenshotImage key={si} shot={shot} onExpand={setLightboxSrc} />
                     ))}
                   </div>
                 ))}
@@ -165,6 +171,26 @@ export default function BlockerCards() {
           </ScrollReveal>
         );
       })}
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-pointer"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <div className="relative max-h-[90vh] max-w-[90vw]">
+            <img
+              src={lightboxSrc}
+              alt="Expanded screenshot"
+              className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl"
+            />
+            <button
+              className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black shadow-lg hover:bg-gray-100 transition-colors"
+              onClick={(e) => { e.stopPropagation(); setLightboxSrc(null); }}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
