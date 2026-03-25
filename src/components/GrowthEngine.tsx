@@ -163,7 +163,7 @@ function TargetAudience() {
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
-          <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/50">
+          <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/60">
             Secondary
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">
