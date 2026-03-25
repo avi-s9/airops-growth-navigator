@@ -114,17 +114,21 @@ const zoneStyles: Record<Zone, { bar: string; barHover: string; pill: string; pi
   lastmile: { bar: "bg-zone-lastmile", barHover: "group-hover:w-2.5", pill: "bg-zone-lastmile-bg border-zone-lastmile text-zone-lastmile-text", pillText: "text-zone-lastmile-text" },
 };
 
-function ScreenshotImage({ shot }: { shot: Screenshot }) {
+function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src: string) => void }) {
   return (
     <figure>
-      <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      <button
+        type="button"
+        onClick={() => onExpand(shot.src)}
+        className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer hover:opacity-90 transition-opacity"
+      >
         <img
           src={shot.src}
           alt={shot.alt}
           className="block w-full"
           loading="lazy"
         />
-      </div>
+      </button>
       <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
         {shot.caption}
       </figcaption>
@@ -134,6 +138,7 @@ function ScreenshotImage({ shot }: { shot: Screenshot }) {
 
 export default function BlockerCards() {
   const [expandedBlockers, setExpandedBlockers] = useState<Set<number>>(new Set());
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   const toggleBlocker = (num: number) => {
     setExpandedBlockers((prev) => {
@@ -148,66 +153,97 @@ export default function BlockerCards() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      {blockers.map((b, i) => {
-        const s = zoneStyles[b.zone];
-        const isExpanded = expandedBlockers.has(b.num);
-        return (
-          <ScrollReveal key={b.num} delay={i * 60}>
-            <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
-              <div className={`w-1.5 flex-shrink-0 transition-all duration-200 ${s.bar} ${s.barHover}`} />
-              <div className="flex-1 p-5">
-                <div className="mb-2 flex flex-wrap items-center gap-3">
-                  <span className="text-base font-bold text-foreground">
-                    {b.num}. {b.title}
-                  </span>
-                  <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
-                    {b.zoneLabel}
-                  </span>
-                </div>
-                <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
-                <p className="text-sm leading-[1.7] text-foreground/80">{b.summary}</p>
-                <button
-                  type="button"
-                  onClick={() => toggleBlocker(b.num)}
-                  className="mt-2 flex items-center gap-1 text-sm font-medium text-primary cursor-pointer hover:underline"
-                >
-                  <span>{isExpanded ? "Show less" : "Read more"}</span>
-                  <span
-                    className="text-xs transition-transform duration-200"
-                    style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+    <>
+      <div className="flex flex-col gap-4">
+        {blockers.map((b, i) => {
+          const s = zoneStyles[b.zone];
+          const isExpanded = expandedBlockers.has(b.num);
+          return (
+            <ScrollReveal key={b.num} delay={i * 60}>
+              <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
+                <div className={`w-1.5 flex-shrink-0 transition-all duration-200 ${s.bar} ${s.barHover}`} />
+                <div className="flex-1 p-5">
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                    <span className="text-base font-bold text-foreground">
+                      {b.num}. {b.title}
+                    </span>
+                    <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
+                      {b.zoneLabel}
+                    </span>
+                  </div>
+                  <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
+                  <p className="text-sm leading-[1.7] text-foreground/80">{b.summary}</p>
+                  <button
+                    type="button"
+                    onClick={() => toggleBlocker(b.num)}
+                    aria-expanded={isExpanded}
+                    className="mt-2 flex items-center gap-1 text-sm font-medium text-primary cursor-pointer hover:underline"
                   >
-                    ▾
-                  </span>
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-out ${
-                    isExpanded ? "mt-3 max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
-
-                  {b.screenshots?.map((row, ri) => (
-                    <div
-                      key={ri}
-                      className={`mt-4 ${
-                        row.length > 1
-                          ? "grid grid-cols-1 gap-3 md:grid-cols-2"
-                          : ""
-                      }`}
+                    <span>{isExpanded ? "Show less" : "Read more"}</span>
+                    <span
+                      className="text-xs transition-transform duration-200"
+                      style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
                     >
-                      {row.map((shot, si) => (
-                        <ScreenshotImage key={si} shot={shot} />
-                      ))}
-                    </div>
-                  ))}
+                      ▾
+                    </span>
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-out ${
+                      isExpanded ? "mt-3 max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
+
+                    {b.screenshots?.map((row, ri) => (
+                      <div
+                        key={ri}
+                        className={`mt-4 ${
+                          row.length > 1
+                            ? "grid grid-cols-1 gap-3 md:grid-cols-2"
+                            : ""
+                        }`}
+                      >
+                        {row.map((shot, si) => (
+                          <ScreenshotImage key={si} shot={shot} onExpand={setLightboxSrc} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
-        );
-      })}
-    </div>
+            </ScrollReveal>
+          );
+        })}
+      </div>
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <div
+            className="relative max-h-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxSrc(null);
+              }}
+              className="absolute right-2 top-2 rounded bg-black/60 px-2 py-1 text-sm text-white hover:bg-black/80"
+              aria-label="Close expanded screenshot"
+            >
+              ✕
+            </button>
+            <img
+              src={lightboxSrc}
+              alt="Expanded screenshot"
+              className="max-h-[90vh] w-auto rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
