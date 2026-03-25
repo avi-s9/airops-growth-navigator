@@ -10,6 +10,7 @@ import ExperimentCards from "@/components/ExperimentCards";
 import GrowthEngine from "@/components/GrowthEngine";
 import InvestmentDashboard from "@/components/InvestmentDashboard";
 import ScrollReveal from "@/components/ScrollReveal";
+import ROICalculator from "@/components/ROICalculator";
 
 const SectionHeader = ({ children }: { children: React.ReactNode }) => (
   <h2 className="mb-6 font-display text-[28px] tracking-[-0.02em] text-foreground">{children}</h2>
@@ -205,34 +206,9 @@ export default function Index() {
             <InvestmentDashboard />
           </ScrollReveal>
 
-          {/* ROI Model */}
           <ScrollReveal className="mt-16">
             <SectionHeader>ROI Model</SectionHeader>
-            <div className="mb-6 flex items-center justify-between gap-0 overflow-x-auto rounded-xl border border-border bg-card p-6 shadow-card max-md:justify-start max-md:gap-2">
-              {[
-                { value: "1,000", label: "Checker users/mo", pct: null },
-                { value: "200", label: "Audits", pct: "20%" },
-                { value: "24", label: "Trials", pct: "12%" },
-                { value: "10", label: "Activated Users", pct: "42%" },
-              ].map((stage, i) => (
-                <div key={i} className="flex items-center gap-0">
-                  {i > 0 && (
-                    <div className="flex flex-col items-center px-3 max-md:px-1.5">
-                      <span className="mb-1 font-mono text-xs font-semibold text-primary">{stage.pct}</span>
-                      <div className="text-foreground/30">→</div>
-                    </div>
-                  )}
-                  <div className="flex flex-col items-center text-center">
-                    <span className="font-mono text-2xl font-bold text-foreground max-md:text-lg">{stage.value}</span>
-                    <span className="mt-1 text-xs text-foreground/50 max-md:text-[10px]">{stage.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-sm leading-[1.7] text-foreground/60">
-              At AirOps' mid-market contract values, 10 activated users/month from a roughly $10K/month channel
-              is strong unit economics - and it compounds as organic distribution scales while costs stay fixed.
-            </p>
+            <ROICalculator />
           </ScrollReveal>
         </div>
       </section>
