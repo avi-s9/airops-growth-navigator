@@ -133,41 +133,68 @@ function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src:
 
 export default function BlockerCards() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [expandedBlockers, setExpandedBlockers] = useState<Set<number>>(new Set());
+
+  const toggleBlocker = (num: number) => {
+    setExpandedBlockers((prev) => {
+      const next = new Set(prev);
+      if (next.has(num)) {
+        next.delete(num);
+      } else {
+        next.add(num);
+      }
+      return next;
+    });
+  };
 
   return (
     <div className="flex flex-col gap-4">
       {blockers.map((b, i) => {
         const s = zoneStyles[b.zone];
+        const isExpanded = expandedBlockers.has(b.num);
         return (
           <ScrollReveal key={b.num} delay={i * 60}>
             <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
               <div className={`w-1.5 flex-shrink-0 transition-all duration-200 ${s.bar} ${s.barHover}`} />
               <div className="flex-1 p-5">
-                <div className="mb-2 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  className="mb-2 flex w-full flex-wrap items-center gap-3 text-left"
+                  onClick={() => toggleBlocker(b.num)}
+                  aria-expanded={isExpanded}
+                >
                   <span className="text-base font-bold text-foreground">
                     {b.num}. {b.title}
                   </span>
                   <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
                     {b.zoneLabel}
                   </span>
-                </div>
-                <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
-                <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
+                  <span className="ml-auto text-text-secondary">{isExpanded ? "−" : "+"}</span>
+                </button>
 
-                {b.screenshots?.map((row, ri) => (
-                  <div
-                    key={ri}
-                    className={`mt-4 ${
-                      row.length > 1
-                        ? "grid grid-cols-1 gap-3 md:grid-cols-2"
-                        : ""
-                    }`}
-                  >
-                    {row.map((shot, si) => (
-                      <ScreenshotImage key={si} shot={shot} onExpand={setLightboxSrc} />
-                    ))}
-                  </div>
-                ))}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
+                    isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
+                  <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
+
+                  {b.screenshots?.map((row, ri) => (
+                    <div
+                      key={ri}
+                      className={`mt-4 ${
+                        row.length > 1
+                          ? "grid grid-cols-1 gap-3 md:grid-cols-2"
+                          : ""
+                      }`}
+                    >
+                      {row.map((shot, si) => (
+                        <ScreenshotImage key={si} shot={shot} onExpand={setLightboxSrc} />
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>
