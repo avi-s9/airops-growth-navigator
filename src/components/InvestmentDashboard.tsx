@@ -122,7 +122,7 @@ export default function InvestmentDashboard() {
     <div>
       {/* Primary Metric Callout */}
       <div className="mb-6 rounded-xl border border-border bg-surface-muted p-6 text-center shadow-card">
-        <div className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em] text-foreground/40">
+        <div className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em] text-foreground/50">
           Primary Success Metric
         </div>
         <div className="mb-1 font-display text-[22px] tracking-[-0.02em] text-foreground">
