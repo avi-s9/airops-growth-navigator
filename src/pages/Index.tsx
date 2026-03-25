@@ -111,17 +111,27 @@ export default function Index() {
               </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <figure>
-                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <button
+                    type="button"
+                    className="block w-full cursor-pointer overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-opacity hover:opacity-90"
+                    onClick={(e) => openLightbox(articleImg, e.currentTarget)}
+                    aria-label="View larger: Generated article screenshot"
+                  >
                     <img src={articleImg} alt="Generated article screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
-                  </div>
+                  </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
                     The generated article — 2,400 words in SSENSE's editorial voice, with external links and citations.
                   </figcaption>
                 </figure>
                 <figure>
-                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <button
+                    type="button"
+                    className="block w-full cursor-pointer overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-opacity hover:opacity-90"
+                    onClick={(e) => openLightbox(dashboardImg, e.currentTarget)}
+                    aria-label="View larger: SSENSE dashboard screenshot"
+                  >
                     <img src={dashboardImg} alt="SSENSE dashboard screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
-                  </div>
+                  </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
                     The SSENSE dashboard after onboarding — 35.6% mention rate, 5.1% citation rate. Real data, once you get past the 0% during setup.
                   </figcaption>
