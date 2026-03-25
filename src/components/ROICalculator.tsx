@@ -56,12 +56,13 @@ export default function ROICalculator() {
         {sliders.map((s) => (
           <div key={s.key}>
             <div className="mb-1.5 flex items-center justify-between">
-              <label className="text-xs font-medium text-foreground/60">{s.label}</label>
+              <label htmlFor={`roi-slider-${s.key}`} className="text-xs font-medium text-foreground/60">{s.label}</label>
               <span className="font-mono text-sm font-semibold text-foreground">
                 {s.key === "checkerUsers" ? inputs[s.key].toLocaleString() : inputs[s.key]}{s.suffix}
               </span>
             </div>
             <input
+              id={`roi-slider-${s.key}`}
               type="range"
               min={s.min}
               max={s.max}
