@@ -346,6 +346,9 @@ function Prioritization() {
 export default function GrowthEngine() {
   return (
     <>
+      <p className="mb-8 text-sm leading-[1.7] text-foreground/60 italic border-l-2 border-primary/30 pl-4">
+        Assuming the activation fixes from Part 1 are live and working, here's how I'd drive more users into the top of the funnel.
+      </p>
       <SectionHeader>The Growth Loop</SectionHeader>
       <GrowthLoop />
       <PrototypeSection />
