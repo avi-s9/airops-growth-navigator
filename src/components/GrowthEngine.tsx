@@ -29,7 +29,7 @@ function GrowthLoop() {
               </span>
             </div>
             {i < stages.length - 1 && (
-              <div className="flex-shrink-0 text-lg text-foreground/30">→</div>
+              <div className="flex-shrink-0 text-lg text-foreground/40">→</div>
             )}
           </div>
         ))}
