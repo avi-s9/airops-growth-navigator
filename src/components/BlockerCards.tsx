@@ -27,25 +27,25 @@ const blockers: {
     title: "The Benchmark credibility gap",
     zone: "trust",
     zoneLabel: "Trust Erosion",
-    step: "Step 5 — 11.3% drop, 46s",
-    text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both the user and all competitors, the headline 'Your competitors are outperforming you in AI Search' feels inaccurate. Users invested 4 steps of effort — the Benchmark is supposed to be the first payoff. When the data is empty or flat, it doesn't create urgency; it creates doubt about whether the platform actually works.",
+    step: "Step 5 - 11.3% drop, 46s",
+    text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both you and all your competitors, the headline 'Your competitors are outperforming you in AI Search' just feels wrong. You've put in 4 steps of effort - the Benchmark is supposed to be the first payoff. When the data is empty, it doesn't create urgency; it makes you doubt whether the platform actually works.",
     screenshots: [
       [
         {
           src: benchmarkImg,
           alt: "AirOps Benchmark Results Screen showing 0% scores",
-          caption: "The actual Benchmark screen — 'Your competitors are outperforming you' with every score at 0%.",
+          caption: "The actual Benchmark screen - 'Your competitors are outperforming you' with every score at 0%.",
         },
       ],
     ],
   },
   {
     num: 2,
-    title: "Value is backloaded — 5 steps of input before any return",
+    title: "Value is backloaded - 5 steps of input before any return",
     zone: "trust",
     zoneLabel: "Trust Erosion",
-    step: "Steps 1–5",
-    text: "The first five steps collect workspace info, personalization, competitors, and target prompts — all from the user. The first time the product shows value back is the Benchmark (Step 5), and it can underdeliver. Users who are less bought-in (came from an ad vs. a referral) are disproportionately dropping in Steps 3–5 because they haven't seen enough value to justify the investment being asked of them.",
+    step: "Steps 1-5",
+    text: "The first five steps collect workspace info, personalization, competitors, and target prompts - all from you, nothing back yet. The first time the product shows value is the Benchmark (Step 5), and it can underdeliver. Users who showed up from an ad rather than a referral are probably the ones leaving in Steps 3-5 - they haven't seen anything yet that justifies the effort.",
   },
   {
     num: 3,
@@ -53,7 +53,7 @@ const blockers: {
     zone: "tollbooth",
     zoneLabel: "Unnecessary Tollbooths",
     step: "Steps 6 and 8",
-    text: "Step 6 asks users to click a CTA to 'Start Free Trial' — but why isn't the trial auto-started? This creates hesitation ('Will I be charged?') without adding value. Step 8 forces a premature choice between Content Creation and Content Refresh. Users lack context to decide, and the binary framing creates commitment anxiety.",
+    text: "Step 6 asks you to click 'Start Free Trial' - but you already signed up. Why is this a separate step? It just makes you wonder if you're about to get charged. Step 8 forces you to pick Content Creation or Content Refresh before you really understand either one. That kind of premature choice makes people hesitate.",
     screenshots: [
       [
         {
@@ -74,19 +74,19 @@ const blockers: {
     title: "Last-mile execution cliff",
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
-    step: "Steps 11→12 — 28% drop, 65s",
-    text: "The single biggest drop in the funnel. Users arrive at the Actions Grid after 10 onboarding steps, see 13 rows of keywords, and need to click through a 4–5 step sequential workflow (brief → analysis → article → internal links → external links), each requiring a click and an AI processing wait. 28% of users who completed the entire onboarding never see a piece of generated content.",
+    step: "Steps 11 to 12 - 28% drop, 65s",
+    text: "The single biggest drop in the funnel. You arrive at the Actions Grid after 10 onboarding steps, see 13 rows of keywords, and need to click through a 4-5 step sequential workflow (brief, analysis, article, internal links, external links), each requiring a click and an AI processing wait. 28% of the people who made it through the entire onboarding never see a single piece of generated content.",
     screenshots: [
       [
         {
           src: actionsGridImg,
           alt: "AirOps Actions Grid with Run Workflow buttons",
-          caption: "13 rows of 'Run Workflow' buttons — the blank canvas problem.",
+          caption: "13 rows of 'Run Workflow' buttons - the blank canvas problem.",
         },
         {
           src: reviewOutputImg,
           alt: "AirOps Review Output step 1 of 5",
-          caption: "'Review Output (1/5)' — five sequential steps between the Grid and a finished article.",
+          caption: "'Review Output (1/5)' - five sequential steps between the Grid and a finished article.",
         },
       ],
     ],
@@ -97,7 +97,7 @@ const blockers: {
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
     step: "Step 12+",
-    text: "Even among the 41% who reach the aha moment and see a generated article, the experience ends ambiguously. There's no 'publish this,' no 'generate your next article,' no clear next step. The onboarding guides users to the aha moment but not through it — hurting early retention even among activated users.",
+    text: "Even among the 41% who reach the aha moment and see a generated article, the experience just stops. There's no 'publish this,' no 'generate your next article,' no obvious next move. The onboarding gets you to the aha moment but then leaves you there, which means even people who activated might not come back for a second session.",
   },
 ];
 

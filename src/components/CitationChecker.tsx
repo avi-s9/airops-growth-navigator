@@ -17,7 +17,7 @@ interface ResultData {
 const mockResults: Record<string, ResultData> = {
   "ramp.com/pricing": {
     url: "ramp.com/pricing",
-    title: "Pricing — Ramp",
+    title: "Pricing - Ramp",
     citations: {
       chatgpt: { cited: true, prompts: ["best corporate cards for startups", "Ramp vs Brex pricing"] },
       perplexity: { cited: true, prompts: ["corporate card comparison", "Ramp pricing plans"] },
@@ -29,7 +29,7 @@ const mockResults: Record<string, ResultData> = {
   },
   "chime.com/banking": {
     url: "chime.com/banking",
-    title: "Online Banking — Chime",
+    title: "Online Banking - Chime",
     citations: {
       chatgpt: { cited: false, prompts: [] },
       perplexity: { cited: true, prompts: ["best online banks no fees"] },
@@ -140,7 +140,7 @@ export default function CitationChecker() {
       <div className="mb-6 flex gap-2 max-md:flex-col">
         <input
           type="text"
-          placeholder="Enter a URL — e.g., ramp.com/pricing"
+          placeholder="Enter a URL - e.g., ramp.com/pricing"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -218,7 +218,7 @@ export default function CitationChecker() {
             {result.topCompetitor && (
               <div className="mt-3 inline-block rounded-lg bg-foreground/5 px-4 py-2 text-[13px] text-foreground/70">
                 {result.topCompetitor.name} is cited in{" "}
-                <strong className="font-mono">{result.topCompetitor.score}</strong> — that's a{" "}
+                <strong className="font-mono">{result.topCompetitor.score}</strong> - that's a{" "}
                 <strong className="text-destructive">
                   {result.topCompetitor.score - result.score}x gap
                 </strong>
@@ -246,7 +246,7 @@ export default function CitationChecker() {
                     {data.cited ? (
                       <>
                         <span className="text-[13px] font-semibold text-primary">
-                          Cited — {data.prompts.length} prompt{data.prompts.length > 1 ? "s" : ""}
+                          Cited - {data.prompts.length} prompt{data.prompts.length > 1 ? "s" : ""}
                         </span>
                         <div className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-primary/15 text-xs text-primary">
                           ✓
@@ -270,7 +270,7 @@ export default function CitationChecker() {
           <div className="rounded-xl bg-gradient-to-br from-accent-dark to-foreground p-6 text-center">
             <div className="mb-1.5 text-lg font-bold text-card">Want your full domain audit?</div>
             <div className="mb-4 text-sm text-card/70">
-              See every page, every prompt, every competitor gap — free.
+              See every page, every prompt, every competitor gap - free.
             </div>
             <div className="mx-auto flex max-w-[400px] gap-2 max-md:flex-col">
               <input

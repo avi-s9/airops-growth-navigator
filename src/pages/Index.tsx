@@ -35,11 +35,11 @@ export default function Index() {
             {/* 1A: Funnel */}
             <SectionHeader>The Funnel at a Glance</SectionHeader>
             <p className="mb-8 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
-              337 users enter the onboarding flow. Only 139 reach the aha moment — seeing
+              337 users enter the onboarding flow. Only 139 reach the aha moment - seeing
               high-quality content generated in the Actions Grid. That's a{" "}
               <strong>41.3% activation rate</strong>, with an average time-to-convert of{" "}
               <strong>3h 35m</strong> suggesting most users aren't completing this in one
-              sitting. The funnel has three distinct problem zones.
+              sitting. The drop-off falls into three problem zones.
             </p>
           </ScrollReveal>
           <FunnelChart />
@@ -132,8 +132,8 @@ export default function Index() {
               ))}
             </div>
             <p className="text-sm leading-[1.7] text-foreground/60">
-              At AirOps' mid-market contract values, 10 activated users/month from a ~$10K/month channel
-              is strong unit economics — and it compounds as organic distribution scales while costs stay fixed.
+              At AirOps' mid-market contract values, 10 activated users/month from a roughly $10K/month channel
+              is strong unit economics - and it compounds as organic distribution scales while costs stay fixed.
             </p>
           </ScrollReveal>
         </div>
@@ -142,7 +142,7 @@ export default function Index() {
       {/* Footer */}
       <footer className="border-t border-border px-6 py-12">
         <div className="mx-auto max-w-content text-center">
-          <p className="text-sm text-text-secondary">Built by Avi — March 2026</p>
+          <p className="text-sm text-text-secondary">Built by Avi - March 2026</p>
           <p className="mt-1 text-xs text-foreground/30">Interactive presentation built with React</p>
         </div>
       </footer>

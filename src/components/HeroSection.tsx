@@ -1,7 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const stats = [
-  { value: "337 → 139", label: "Users reaching aha moment" },
+  { value: "337 to 139", label: "Users reaching aha moment" },
   { value: "41.3%", label: "Current activation rate" },
   { value: "3h 35m", label: "Avg time to convert" },
 ];
@@ -26,10 +26,9 @@ export default function HeroSection() {
             Getting More Users to the Aha Moment
           </h1>
           <p className="mt-4 max-w-[680px] text-lg leading-[1.7] text-text-secondary max-md:text-base">
-            An analysis of AirOps' onboarding funnel, a redesigned activation flow,
-            and a self-serve growth engine to drive top-of-funnel awareness.
+            Why 59% of users drop off before seeing their first piece of generated content - and how to fix it.
           </p>
-          <p className="mt-3 text-sm text-text-secondary">Avi — March 2026</p>
+          <p className="mt-3 text-sm text-text-secondary">Avi - March 2026</p>
         </div>
 
         <div className="mt-10 grid grid-cols-3 gap-4 max-md:grid-cols-1">

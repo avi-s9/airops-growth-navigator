@@ -45,7 +45,7 @@ function GrowthLoop() {
           <h3 className="mb-3 text-base font-semibold text-foreground">AI Citation Checker</h3>
           <p className="mb-4 text-sm leading-[1.7] text-foreground/70">
             A single-page tool where anyone can paste a URL and instantly see whether that page is
-            being cited by AI search platforms — ChatGPT, Perplexity, Gemini — and for which
+            being cited by AI search platforms - ChatGPT, Perplexity, Gemini - and for which
             prompts. No signup required. Output is a simple, shareable scorecard.
           </p>
           <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-accent-dark">
@@ -60,10 +60,7 @@ function GrowthLoop() {
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">Full AI Visibility Audit</h3>
           <p className="mb-4 text-sm leading-[1.7] text-foreground/70">
-            After checking a page, the user is prompted to see their full domain audit. They enter
-            their domain and email, and receive a branded report comparing their site-wide AI
-            citation rates against competitors. The report is designed to be shared with leadership
-            or posted on LinkedIn.
+            After checking a page, the user is prompted to see their full domain audit. They enter their domain and email, and get back a branded report comparing their entire domain's AI citation rates against competitors - the kind of thing you'd forward to your CMO or post on LinkedIn.
           </p>
           <span className="rounded-full bg-zone-trust-bg px-3 py-1 text-xs font-semibold text-zone-trust-text">
             Email-gated · Shareable report · Trial on-ramp
@@ -108,11 +105,7 @@ function TargetAudience() {
             Content/SEO Leads at Mid-Market & Enterprise
           </h3>
           <p className="text-sm leading-[1.7] text-foreground/70">
-            The people who own organic traffic and are starting to hear from their CMO: "What's our
-            AI search strategy?" They're under pressure to answer a question they don't yet have
-            tools for. The Citation Checker gives them a concrete data point. The Audit gives them
-            the ammo to go to leadership and say: "Here's where we stand, here's the gap, and
-            here's a platform that can close it."
+            The people who own organic traffic and are starting to hear from their CMO: "What's our AI search strategy?" They need to answer a question they don't have tools for yet. The Citation Checker gives them a concrete data point. The Audit gives them the ammo to go to leadership and say: "Here's where we stand, here's the gap, and here's a platform that can close it."
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
@@ -123,9 +116,7 @@ function TargetAudience() {
             Agency Leads & Consultants
           </h3>
           <p className="text-sm leading-[1.7] text-foreground/70">
-            People who manage content strategy for multiple clients. The Checker becomes a
-            prospecting tool — run it on a client's site, share the results, and use it to justify
-            an AirOps-powered engagement.
+            People who manage content strategy for multiple clients. The Checker becomes a prospecting tool - run it on a client's site, share the results, and use that to pitch them on AirOps.
           </p>
         </div>
       </div>
@@ -138,19 +129,19 @@ const channels = [
   {
     icon: "🌱",
     title: "Organic / SEO",
-    desc: "Landing pages targeting 'AI search visibility checker,' 'is my site in ChatGPT,' 'AEO audit tool' — emerging high-intent queries with low competition. Publish the methodology as thought leadership content.",
+    desc: "Landing pages targeting 'AI search visibility checker,' 'is my site in ChatGPT,' 'AEO audit tool' - emerging high-intent queries with low competition. Publish the methodology as thought leadership content.",
     tag: "Compounding · Medium-term",
   },
   {
     icon: "📣",
     title: "Social / Community",
-    desc: "Product Hunt launch of the Checker as a free tool. Seed in content leader communities: Superpath, SEO Twitter/X, LinkedIn groups. Create a 'Top 100 SaaS AI Visibility' report tagging companies to encourage checking their own scores.",
+    desc: "Product Hunt launch of the Checker as a free tool. Seed in content leader communities like Superpath, SEO Twitter/X, and LinkedIn groups. Create a 'Top 100 SaaS AI Visibility' report tagging companies to get them checking their own scores.",
     tag: "Viral · Short-term",
   },
   {
     icon: "🎯",
     title: "Paid",
-    desc: "LinkedIn ads targeting Content/SEO Director titles at mid-market companies, driving to the Checker (not AirOps directly). Retarget Checker users who didn't convert to Audit with 'See your full report' ads.",
+    desc: "LinkedIn ads targeting Content/SEO Director titles at mid-market companies, driving to the Checker, not AirOps directly. Retarget Checker users who didn't convert to the Audit with 'See your full report' ads.",
     tag: "Targeted · Test-and-learn",
   },
   {
@@ -184,7 +175,7 @@ function Distribution() {
 /* ─── 2E: Sequencing Timeline ─── */
 const phases = [
   {
-    weeks: "Weeks 1–2",
+    weeks: "Weeks 1-2",
     title: "Build & Soft-Launch",
     items: [
       "Vibecode Checker MVP",
@@ -193,16 +184,16 @@ const phases = [
     ],
   },
   {
-    weeks: "Weeks 3–4",
+    weeks: "Weeks 3-4",
     title: "Audit + Funnel Connection",
     items: [
       "Build email-gated domain audit report",
-      "Connect audit data → AirOps onboarding (pre-populate)",
+      "Connect audit data to AirOps onboarding (pre-populate)",
       "Design shareable report format (unique URL, OG tags, PDF export)",
     ],
   },
   {
-    weeks: "Weeks 5–6",
+    weeks: "Weeks 5-6",
     title: "Public Launch",
     items: [
       "Product Hunt launch",
@@ -212,11 +203,11 @@ const phases = [
     ],
   },
   {
-    weeks: "Weeks 7–8",
+    weeks: "Weeks 7-8",
     title: "Optimize",
     items: [
       "Analyze funnel conversion per stage",
-      "A/B test Checker → Audit gate timing",
+      "A/B test Checker-to-Audit gate timing",
       "Iterate on report design based on share rate data",
     ],
   },
@@ -257,7 +248,7 @@ function Prioritization() {
       <div className="grid gap-5 md:grid-cols-2">
         <div className="rounded-xl border-l-4 border-l-primary border-t border-r border-b border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
           <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-primary">
-            Test First (Weeks 1–4)
+            Test First (Weeks 1-4)
           </h3>
           <ul className="mt-3 flex flex-col gap-2.5">
             {[

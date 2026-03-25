@@ -9,14 +9,14 @@ const experiments = [
     borderColor: "border-zone-lastmile",
     targetZone: "Last-Mile Cliff",
     hypothesis:
-      'If we auto-trigger content generation for the highest-priority keyword during onboarding (while the user reviews Brand Kit), users will arrive at the Grid with content already generated — reducing the Step 11→12 drop from 28% to under 15%.',
+      'If we auto-trigger content generation for the highest-priority keyword during onboarding (while the user reviews Brand Kit), users will arrive at the Grid with content already generated, reducing the Step 11-to-12 drop from 28% to under 15%.',
     rationale:
-      "The 28% drop hits users who already completed 10 onboarding steps — these are high-intent users. They didn't quit during harder setup phases; they quit at the moment of activation. That pattern strongly indicates the barrier is friction (too many clicks, sequential wait times, unclear next action), not motivation. When drop-off is friction-driven, removing the friction typically recaptures a large share of lost users. We wouldn't expect to recapture all 28% — some will bounce if the generated content doesn't meet quality expectations. But cutting a friction-driven drop roughly in half is a well-supported baseline.",
+      "The 28% drop is hitting users who already completed 10 onboarding steps. These are high-intent people. They didn't quit during the harder setup phases; they quit at the moment of activation. That tells you the barrier is friction - too many clicks, wait times between steps, unclear what to do next - not a lack of interest. When the cause is mechanical, fixing it tends to recapture a big chunk of the lost users. We wouldn't expect to recover all 28% - some will bounce if the content quality doesn't meet expectations. But cutting a friction-driven drop roughly in half is a reasonable baseline.",
     changes: [
-      "After Brand Kit confirmation (Step 10), system auto-runs full content creation workflow for Row 1",
-      "User sees progress indicator on Grid when they land — content is generating or already complete",
-      'No manual "Run Workflow" clicks needed for the first piece of content',
-      'Clear post-aha CTA: "Publish this article" or "Generate your next one"',
+      "After you confirm the Brand Kit (Step 10), the system auto-runs the full content creation workflow for Row 1",
+      "You see a progress indicator on the Grid when you land - content is generating or already done",
+      'No manual "Run Workflow" clicks needed for your first piece of content',
+      'Clear next step after the aha: "Publish this article" or "Generate your next one"',
     ],
     metrics: {
       primary: { name: "Grid-to-Execute conversion rate", current: "72%", target: "85%+" },
@@ -25,8 +25,8 @@ const experiments = [
         "Overall onboarding completion rate",
       ],
     },
-    impact: "~13 percentage point lift in Grid-to-Execute conversion → ~25 additional users reaching the aha moment per cohort of 337 (from 139 to ~164)",
-    measurement: "A/B test — 50/50 split between current flow (manual execution) and auto-execution. Run 2–3 weeks to reach n≥300 per variant. Track with existing funnel instrumentation.",
+    impact: "Roughly 13 percentage point lift in Grid-to-Execute conversion, translating to about 25 additional users reaching the aha moment per cohort of 337 (from 139 to around 164)",
+    measurement: "A/B test, 50/50 split between current flow (manual execution) and auto-execution. Run for 2-3 weeks to reach n of 300+ per variant. Track with existing funnel instrumentation.",
   },
   {
     id: "B",
@@ -36,24 +36,24 @@ const experiments = [
     borderColor: "border-zone-trust",
     targetZone: "Trust Erosion",
     hypothesis:
-      'If we show users a single personalized competitive insight immediately after the Competitors step (e.g., "Farfetch is cited for 3 prompts where you\'re invisible"), mid-funnel completion from Step 3 to Step 10 will improve by 9–15%.',
+      'If we show users a single personalized competitive insight right after the Competitors step (e.g., "Farfetch is cited for 3 prompts where you\'re invisible"), mid-funnel completion from Step 3 to Step 10 will improve by 9-15%.',
     rationale:
-      "Mid-funnel attrition (Steps 3→10) is distributed across multiple steps with different causes — Benchmark credibility, trial CTA friction, forced Creation/Refresh choice. A micro-insight after Step 3 doesn't fix all of those, so the expectation is bounded. What it does address is the motivation curve: currently users give input for 5 consecutive steps before the product gives anything back. Behavioral design research (Fogg's Behavior Model, the endowed progress effect) consistently shows that early signals of personalized value increase completion in multi-step flows. The lower bound (9%) assumes the insight feels interesting but not urgent; the upper bound (15%) assumes it creates genuine pull through subsequent steps.",
+      "Mid-funnel attrition (Steps 3 through 10) is spread across multiple steps with different causes - Benchmark credibility, trial CTA friction, the forced Creation/Refresh choice. A micro-insight after Step 3 won't fix all of those, so we're setting bounded expectations. What it does address is the motivation curve: right now, users give input for 5 consecutive steps before the product gives anything back. There's well-documented behavioral research on this - Fogg's Behavior Model, the endowed progress effect - showing that an early signal of personalized value makes people much more likely to finish a multi-step flow. The lower bound (9%) assumes the insight feels interesting but not urgent; the upper bound (15%) assumes it creates a real pull that carries users through the longer subsequent steps.",
     changes: [
-      "After confirming competitors (Step 3), a brief interstitial (3–5 seconds) appears",
+      "After confirming competitors (Step 3), a brief interstitial (3-5 seconds) appears",
       "Shows one specific data point: a prompt where a competitor is cited and the user is not",
       'Framed as: "Here\'s one thing we already found"',
       "User then continues to Target Prompts as normal",
     ],
     metrics: {
-      primary: { name: "Step 3 → Step 10 completion rate", current: "~63%", target: "~72%" },
+      primary: { name: "Step 3 to Step 10 completion rate", current: "~63%", target: "~72%" },
       secondary: [
-        "Time on Target Prompts step (expect slight increase — more engagement)",
-        "Benchmark step drop-off (expect decrease — users have context)",
+        "Time on Target Prompts step (expect slight increase - more engagement)",
+        "Benchmark step drop-off (expect decrease - users have context)",
       ],
     },
-    impact: "9–15 percentage point improvement in mid-funnel completion → ~30–50 additional users reaching the Grid per cohort of 337",
-    measurement: "A/B test — 50/50 split. Control: current Competitors → Target Prompts. Variant: micro-insight interstitial. Run 3 weeks minimum for statistical significance.",
+    impact: "9-15 percentage point improvement in mid-funnel completion, translating to roughly 30-50 additional users reaching the Grid per cohort of 337",
+    measurement: "A/B test, 50/50 split. Control: current Competitors to Target Prompts transition. Variant: micro-insight interstitial. Run 3 weeks minimum for statistical significance.",
   },
 ];
 

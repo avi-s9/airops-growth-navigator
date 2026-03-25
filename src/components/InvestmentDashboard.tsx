@@ -7,17 +7,17 @@ const thresholds = [
     label: "Green Light",
     emoji: "🟢",
     headline: "Double down",
-    primary: "≥ 10 activated trial users / month",
+    primary: "at least 10 activated trial users / month",
     timeframe: "by Week 8 post-launch",
     description:
-      "The channel is producing real AirOps users at a rate that justifies scaling. Every stage of the funnel is functioning — the hook converts, the report drives adoption, and the viral loop is firing.",
+      "The channel is producing real AirOps users at a rate that justifies scaling. Every stage of the funnel is working - the hook converts, the report drives adoption, and the viral loop is firing.",
     diagnostics: [
-      { metric: "Checker → Audit", target: "≥ 20%", meaning: "The hook creates urgency" },
-      { metric: "Audit → Trial", target: "≥ 12%", meaning: "The report drives adoption" },
-      { metric: "Share rate", target: "≥ 15%", meaning: "The viral loop is self-sustaining" },
+      { metric: "Checker to Audit", target: "at least 20%", meaning: "The hook creates urgency" },
+      { metric: "Audit to Trial", target: "at least 12%", meaning: "The report drives adoption" },
+      { metric: "Share rate", target: "at least 15%", meaning: "The viral loop is self-sustaining" },
     ],
     action:
-      "Request dedicated resources and scale distribution. The exact diagnostic mix matters less than the primary number — if you're hitting 10+ activated users with a different conversion path than expected, the funnel is working.",
+      "Request dedicated resources and scale distribution. The exact diagnostic mix matters less than the primary number - if you're hitting 10+ activated users through a different conversion path than expected, the funnel is working.",
     zone: "green" as const,
   },
   {
@@ -25,17 +25,17 @@ const thresholds = [
     label: "Yellow Light",
     emoji: "🟡",
     headline: "Promising but needs iteration",
-    primary: "4–9 activated trial users / month",
+    primary: "4-9 activated trial users / month",
     timeframe: "by Week 8 post-launch",
     description:
-      "The channel is producing real users but not at a rate that justifies scaling yet. Use the diagnostics to identify which stage of the funnel needs work.",
+      "The channel is producing real users, but not enough to justify scaling yet. This is where you look at the diagnostics to figure out what's broken.",
     diagnostics: [
-      { metric: "Checker → Audit", target: "10–19%", meaning: "Hook is interesting, not compelling enough" },
-      { metric: "Audit → Trial", target: "5–11%", meaning: "Report creates awareness, not urgency" },
-      { metric: "Share rate", target: "8–14%", meaning: "Some sharing, not enough to compound" },
+      { metric: "Checker to Audit", target: "10-19%", meaning: "Hook is interesting, not compelling enough" },
+      { metric: "Audit to Trial", target: "5-11%", meaning: "Report creates awareness, not urgency" },
+      { metric: "Share rate", target: "8-14%", meaning: "Some sharing, not enough to compound" },
     ],
     action:
-      "Give it 4 additional weeks (Weeks 9–12) focused on the weakest diagnostic. If 2 diagnostics are green and 1 is yellow, keep iterating. If 2 are yellow and 1 is green, the concept needs more fundamental rethinking.",
+      "Give it 4 more weeks (Weeks 9-12) focused on the weakest diagnostic. If 2 diagnostics are green and 1 is yellow, keep iterating. If 2 are yellow and 1 is green, the concept needs more fundamental rethinking.",
     zone: "yellow" as const,
   },
   {
@@ -46,14 +46,14 @@ const thresholds = [
     primary: "< 4 activated trial users / month",
     timeframe: "after 8 weeks, with no upward trend",
     description:
-      "The channel isn't producing enough value to justify even current resource allocation. The diagnostics tell you whether this is fixable or fundamental.",
+      "The channel isn't producing enough value to justify even the current resource allocation. The diagnostics tell you whether this is something you can fix or something more fundamental.",
     diagnostics: [
-      { metric: "Checker → Audit", target: "< 10%", meaning: "Value problem — the insight doesn't create urgency" },
-      { metric: "Audit → Trial", target: "< 5%", meaning: "Awareness-to-action gap too wide for self-serve" },
-      { metric: "Share rate", target: "< 5%", meaning: "Viral loop is dead — growth requires only paid" },
+      { metric: "Checker to Audit", target: "< 10%", meaning: "Value problem - the insight doesn't create urgency" },
+      { metric: "Audit to Trial", target: "< 5%", meaning: "Awareness-to-action gap too wide for self-serve" },
+      { metric: "Share rate", target: "< 5%", meaning: "Viral loop is dead - growth requires only paid" },
     ],
     action:
-      "If the primary metric is below threshold AND the weakest diagnostic shows no improvement trend across Weeks 6–8, kill the project. Reallocate to the next growth bet (template gallery with compounding SEO dynamics).",
+      "If the primary metric is below threshold and the weakest diagnostic shows no improvement trend across Weeks 6-8, kill the project. Reallocate the team to the next growth bet (template gallery with compounding SEO dynamics).",
     zone: "red" as const,
   },
 ];
@@ -62,23 +62,23 @@ const resources = [
   {
     category: "Headcount",
     items: [
-      { role: "Full-Stack Growth Engineer", allocation: "1.0 FTE (dedicated)", purpose: "Owns Checker + Audit end-to-end: public frontend, AI search API integrations, pre-populated onboarding bridge, funnel instrumentation." },
-      { role: "Product Designer", allocation: "0.5 FTE (shared)", purpose: "Audit report design, shareable output format, Checker → Audit → Trial conversion UX. Shifts to iteration after initial design sprint." },
-      { role: "Content/Growth Marketer", allocation: "0.5 FTE (shared)", purpose: 'Owns distribution: "Top 100" report, community seeding, Product Hunt launch, SEO landing pages.' },
+      { role: "Full-Stack Growth Engineer", allocation: "1.0 FTE (dedicated)", purpose: "Owns the Checker and Audit end-to-end: public frontend, AI search API integrations, pre-populated onboarding bridge, funnel instrumentation." },
+      { role: "Product Designer", allocation: "0.5 FTE (shared)", purpose: "Audit report design, shareable output format, Checker to Audit to Trial conversion UX. Shifts to iteration after initial design sprint." },
+      { role: "Content/Growth Marketer", allocation: "0.5 FTE (shared)", purpose: 'Owns distribution: the "Top 100" report, community seeding, Product Hunt launch, and SEO landing pages.' },
     ],
   },
   {
     category: "Budget",
     items: [
-      { role: "LinkedIn Paid Ads", allocation: "$5–8K / month", purpose: "Targeting Content Director / VP Marketing titles at mid-market companies. Driving to Checker, not AirOps directly. Test budget — scale or cut based on CPA." },
-      { role: "Product Hunt Launch", allocation: "$2–3K (one-time)", purpose: 'Promotional assets and campaign around the "Top 100 SaaS AI Visibility" report.' },
+      { role: "LinkedIn Paid Ads", allocation: "$5-8K / month", purpose: "Targeting Content Director / VP Marketing titles at mid-market companies. Driving to the Checker, not AirOps directly. Test budget - scale or cut based on CPA." },
+      { role: "Product Hunt Launch", allocation: "$2-3K (one-time)", purpose: 'Promotional assets and campaign around the "Top 100 SaaS AI Visibility" report.' },
     ],
   },
   {
     category: "Engineering",
     items: [
-      { role: "AI Citation API Pipeline", allocation: "Critical dependency", purpose: "Scalable, real-time pipeline for checking citations across ChatGPT, Perplexity, and Gemini. Checker needs results in < 10 seconds." },
-      { role: "Pre-populated Onboarding Bridge", allocation: "Highest-leverage investment", purpose: "Connects audit data (competitors, prompts, opportunities) into existing onboarding so trial users skip Steps 1–5." },
+      { role: "AI Citation API Pipeline", allocation: "Critical dependency", purpose: "Scalable, real-time pipeline for checking citations across ChatGPT, Perplexity, and Gemini. The Checker needs to return results in under 10 seconds." },
+      { role: "Pre-populated Onboarding Bridge", allocation: "Highest-leverage investment", purpose: "Connects audit data (competitors, prompts, opportunities) into the existing onboarding so trial users skip Steps 1-5." },
     ],
   },
 ];
@@ -129,7 +129,7 @@ export default function InvestmentDashboard() {
           Activated Trial Users / Month
         </div>
         <div className="text-sm text-foreground/60">
-          from the Checker → Audit → Trial channel
+          from the Checker to Audit to Trial channel
         </div>
 
         {/* Mini gauge with grow animation */}
@@ -180,7 +180,7 @@ export default function InvestmentDashboard() {
               cursor: "pointer",
             }}
           >
-            {gaugeVisible && <>≥ 10</>}
+            {gaugeVisible && <>at least 10</>}
           </button>
         </div>
         <div className="mt-2 text-[11px] text-foreground/40">
@@ -217,7 +217,7 @@ export default function InvestmentDashboard() {
       >
         <div className="mb-4">
           <div className={`mb-1 text-[13px] font-semibold ${styles.text}`}>
-            {active.emoji} {active.label} — {active.primary}
+            {active.emoji} {active.label} - {active.primary}
           </div>
           <div className="text-xs text-foreground/50">{active.timeframe}</div>
         </div>
@@ -263,7 +263,7 @@ export default function InvestmentDashboard() {
           <div>
             <div className="text-base font-bold text-foreground">🟢 If Green Light: Resource Request</div>
             <div className="mt-0.5 text-[13px] text-foreground/60">
-              ~2 FTEs + $8–11K/month → 10+ activated users/month → break-even in 3–4 months
+              About 2 FTEs + $8-11K/month, targeting 10+ activated users/month, break-even in 3-4 months
             </div>
           </div>
           <div
@@ -301,7 +301,7 @@ export default function InvestmentDashboard() {
             <div className="mt-3 rounded-lg bg-gradient-to-br from-accent-dark to-foreground p-4 text-primary-foreground">
               <div className="mb-2 text-sm font-bold">Expected ROI</div>
               <div className="text-[13px] leading-[1.7] opacity-90">
-                1,000 Checker users/mo → 200 Audits → 24 trials → 10 activated users. At AirOps' mid-market contract values, 10 activated users/month from a ~$10K/month channel is strong unit economics — and it compounds as organic distribution scales while costs stay fixed. Break-even within 3–4 months. Positive ROI by month 5–6.
+                1,000 Checker users/mo leads to 200 Audits, then 24 trials, then 10 activated users. At AirOps' mid-market contract values, 10 activated users/month from a roughly $10K/month channel is strong unit economics - and it compounds as organic distribution scales while costs stay fixed. Break-even within 3-4 months. Positive ROI by month 5-6.
               </div>
             </div>
           </div>

@@ -7,13 +7,13 @@ const funnelData = [
   { step: 3, name: "Competitors", users: 306, pct: 90.8, dropoff: 31, dropoffPct: 9.2, time: "12s", zone: "trust" as const, hypothesis: "Auto-detected competitors can be inaccurate (e.g., bankrupt companies), eroding trust in the platform's intelligence before it delivers any value." },
   { step: 4, name: "Target Prompts", users: 292, pct: 86.7, dropoff: 14, dropoffPct: 4.6, time: "23s", zone: "trust" as const, hypothesis: "25 rows of prompts feels overwhelming to review. Users who aren't yet bought in don't want to invest the effort." },
   { step: 5, name: "Benchmark", users: 259, pct: 76.9, dropoff: 33, dropoffPct: 11.3, time: "46s", zone: "trust" as const, hypothesis: "When all scores are 0%, the report card undermines credibility instead of building urgency. Users waited 46s for a result that confused them." },
-  { step: 6, name: "Free Trial", users: 248, pct: 73.6, dropoff: 11, dropoffPct: 4.3, time: "12s", zone: "tollbooth" as const, hypothesis: 'Unnecessary gate — users already signed up. The CTA creates hesitation ("Will I be charged?") without adding value.' },
-  { step: 7, name: "Review Free Trial", users: 236, pct: 70.0, dropoff: 12, dropoffPct: 4.8, time: "4s", zone: "tollbooth" as const, hypothesis: "Informational screen that could be a banner. Adds a step without adding a decision or value moment." },
+  { step: 6, name: "Free Trial", users: 248, pct: 73.6, dropoff: 11, dropoffPct: 4.3, time: "12s", zone: "tollbooth" as const, hypothesis: 'Unnecessary gate - users already signed up. The CTA creates hesitation ("Will I be charged?") without adding value.' },
+  { step: 7, name: "Review Free Trial", users: 236, pct: 70.0, dropoff: 12, dropoffPct: 4.8, time: "4s", zone: "tollbooth" as const, hypothesis: "This could be a banner. It's a full screen with no decision and no new information." },
   { step: 8, name: "See Opportunities", users: 214, pct: 63.5, dropoff: 22, dropoffPct: 9.3, time: "5s", zone: "tollbooth" as const, hypothesis: "Forces a premature choice between Content Creation and Content Refresh. Users lack context to decide and feel commitment anxiety." },
   { step: 9, name: "Review Brand Kit", users: 209, pct: 62.0, dropoff: 5, dropoffPct: 2.3, time: "10s", zone: null, hypothesis: null },
-  { step: 10, name: "Completed", users: 193, pct: 57.3, dropoff: 16, dropoffPct: 7.7, time: "18s", zone: null, hypothesis: "Volume of auto-generated brand content (About, Voice, Sample, Rules) can feel overwhelming, though the quality is impressive." },
+  { step: 10, name: "Completed", users: 193, pct: 57.3, dropoff: 16, dropoffPct: 7.7, time: "18s", zone: null, hypothesis: "There's a lot of auto-generated text to review here - About, Voice, Writing Sample, Rules. The quality is solid, but it's a wall of content when you're 9 steps deep." },
   { step: 11, name: "Viewed Grid", users: 193, pct: 57.3, dropoff: 0, dropoffPct: 0, time: "1s", zone: "lastmile" as const, hypothesis: null },
-  { step: 12, name: "App Execute", users: 139, pct: 41.3, dropoff: 54, dropoffPct: 28.0, time: "1m 5s", zone: "lastmile" as const, hypothesis: "The biggest single drop. Users completed 10 setup steps then faced a 4–5 click sequential workflow with AI wait times. The shift from guided onboarding to self-directed action is too abrupt." },
+  { step: 12, name: "App Execute", users: 139, pct: 41.3, dropoff: 54, dropoffPct: 28.0, time: "1m 5s", zone: "lastmile" as const, hypothesis: "The biggest single drop. Users completed 10 setup steps, then hit a 4-5 click sequential workflow with AI wait times at each stage. The jump from guided onboarding to 'now figure it out yourself' is too abrupt." },
 ];
 
 type Zone = "trust" | "tollbooth" | "lastmile";
@@ -139,7 +139,7 @@ export default function FunnelChart() {
         </div>
       </div>
 
-      {/* Hover detail card — outside chart container to avoid clipping */}
+      {/* Hover detail card - outside chart container to avoid clipping */}
       <div className="mt-4 min-h-[140px] overflow-visible">
         {hovered !== null ? (() => {
           const item = funnelData.find((d) => d.step === hovered);
@@ -164,7 +164,7 @@ export default function FunnelChart() {
                 <div className="flex gap-4 flex-shrink-0">
                   {[
                     { val: String(item.users), label: "users", color: "#1A1A1A" },
-                    { val: item.dropoff > 0 ? `-${item.dropoff}` : "—", label: "drop-off", color: item.dropoffPct > 10 ? "#EF4444" : item.dropoffPct > 5 ? "#F59E0B" : "#10B981" },
+                    { val: item.dropoff > 0 ? `-${item.dropoff}` : "-", label: "drop-off", color: item.dropoffPct > 10 ? "#EF4444" : item.dropoffPct > 5 ? "#F59E0B" : "#10B981" },
                     { val: item.time, label: "avg time", color: "#1A1A1A" },
                   ].map((m) => (
                     <div key={m.label} className="text-center">
@@ -199,9 +199,9 @@ export default function FunnelChart() {
       {/* Summary zone cards */}
       <div className="mt-6 grid grid-cols-3 gap-4 max-md:grid-cols-1">
         {([
-          { zone: "trust" as Zone, loss: "23%", steps: "Steps 3–5", desc: "Value is backloaded — users give input for 5 steps before seeing anything back" },
-          { zone: "tollbooth" as Zone, loss: "18%", steps: "Steps 6–8", desc: "Unnecessary gates that ask for permission or premature decisions" },
-          { zone: "lastmile" as Zone, loss: "28%", steps: "Steps 11–12", desc: "Users completed 10 steps then froze at a multi-click workflow with AI wait times" },
+          { zone: "trust" as Zone, loss: "23%", steps: "Steps 3-5", desc: "Value is backloaded - users give input for 5 steps before seeing anything back" },
+          { zone: "tollbooth" as Zone, loss: "18%", steps: "Steps 6-8", desc: "Unnecessary gates that ask for permission or premature decisions" },
+          { zone: "lastmile" as Zone, loss: "28%", steps: "Steps 11-12", desc: "Users completed 10 steps then froze at a multi-click workflow with AI wait times" },
         ]).map((z) => {
           const zc = zoneConfig[z.zone];
           return (
