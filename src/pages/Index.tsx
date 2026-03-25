@@ -20,8 +20,63 @@ const SectionDivider = () => (
 );
 
 export default function Index() {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxSrc(null);
+    triggerRef.current?.focus();
+    triggerRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    if (!lightboxSrc) return;
+    closeBtnRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "Tab") {
+        e.preventDefault();
+        closeBtnRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [lightboxSrc, closeLightbox]);
+
+  const openLightbox = (src: string, trigger: HTMLElement) => {
+    triggerRef.current = trigger;
+    setLightboxSrc(src);
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Lightbox */}
+      {lightboxSrc && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded screenshot"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            ref={closeBtnRef}
+            type="button"
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-2xl text-white transition-colors hover:bg-white/20"
+          >
+            ✕
+          </button>
+          <img
+            src={lightboxSrc}
+            alt="Expanded screenshot"
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
       <NavBar />
       <HeroSection />
 
