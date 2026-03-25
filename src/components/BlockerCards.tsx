@@ -111,8 +111,10 @@ const zoneStyles: Record<Zone, { bar: string; barHover: string; pill: string; pi
 function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src: string) => void }) {
   return (
     <figure>
-      <div
-        className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer hover:opacity-90 transition-opacity"
+      <button
+        type="button"
+        aria-label={`Expand screenshot: ${shot.alt}`}
+        className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer hover:opacity-90 transition-opacity block w-full bg-transparent p-0 text-left"
         onClick={() => onExpand(shot.src)}
       >
         <img
@@ -121,7 +123,7 @@ function ScreenshotImage({ shot, onExpand }: { shot: Screenshot; onExpand: (src:
           className="block w-full"
           loading="lazy"
         />
-      </div>
+      </button>
       <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
         {shot.caption}
       </figcaption>
@@ -176,7 +178,7 @@ export default function BlockerCards() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-pointer"
           onClick={() => setLightboxSrc(null)}
         >
-          <div className="relative max-h-[90vh] max-w-[90vw]">
+          <div className="relative max-h-[90vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
             <img
               src={lightboxSrc}
               alt="Expanded screenshot"
