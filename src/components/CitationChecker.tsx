@@ -69,6 +69,7 @@ export default function CitationChecker() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ResultData | null>(null);
   const [loadingStep, setLoadingStep] = useState(0);
+  const [auditSubmitted, setAuditSubmitted] = useState(false);
 
   const loadingSteps = [
     "Scanning AI search platforms…",
@@ -85,6 +86,7 @@ export default function CitationChecker() {
     setLoading(true);
     setResult(null);
     setLoadingStep(0);
+    setAuditSubmitted(false);
 
     const stepInterval = setInterval(() => {
       setLoadingStep((prev) => {
@@ -267,22 +269,38 @@ export default function CitationChecker() {
           </div>
 
           {/* CTA */}
-          <div className="rounded-xl bg-gradient-to-br from-accent-dark to-foreground p-6 text-center">
-            <div className="mb-1.5 text-lg font-bold text-card">Want your full domain audit?</div>
-            <div className="mb-4 text-sm text-card/70">
-              See every page, every prompt, every competitor gap - free.
+          {!auditSubmitted ? (
+            <div className="rounded-xl bg-gradient-to-br from-accent-dark to-foreground p-6 text-center">
+              <div className="mb-1.5 text-lg font-bold text-card">Want your full domain audit?</div>
+              <div className="mb-4 text-sm text-card/70">
+                See every page, every prompt, every competitor gap - free.
+              </div>
+              <div className="mx-auto flex max-w-[400px] gap-2 max-md:flex-col">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="flex-1 rounded-lg border border-card/20 bg-card/10 px-3.5 py-3 text-sm text-card outline-none placeholder:text-card/40"
+                />
+                <button
+                  onClick={() => setAuditSubmitted(true)}
+                  className="cursor-pointer whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
+                >
+                  Get Full Audit →
+                </button>
+              </div>
             </div>
-            <div className="mx-auto flex max-w-[400px] gap-2 max-md:flex-col">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 rounded-lg border border-card/20 bg-card/10 px-3.5 py-3 text-sm text-card outline-none placeholder:text-card/40"
-              />
-              <button className="cursor-pointer whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-foreground transition-opacity hover:opacity-90">
-                Get Full Audit →
-              </button>
+          ) : (
+            <div className="rounded-xl border border-primary/30 bg-primary/5 p-6 text-center">
+              <div className="mb-2 text-2xl">✓</div>
+              <div className="mb-1 text-lg font-semibold text-foreground">Audit requested!</div>
+              <p className="mb-3 text-sm text-foreground/60">
+                In production, you'd receive a full domain report within 2 minutes. Your competitors, prompts, and opportunities would pre-load into your AirOps trial - zero re-entry.
+              </p>
+              <p className="text-xs text-foreground/40 italic">
+                This is where the self-serve funnel connects back to the onboarding flow from Section 1.
+              </p>
             </div>
-          </div>
+          )}
 
           {/* Prompts Detail */}
           {platforms.some((p) => result.citations[p.key].cited) && (

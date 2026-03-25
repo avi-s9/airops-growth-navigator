@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import benchmarkImg from "@/assets/Benchmark_Results_Screen.png";
 import freeTrialImg from "@/assets/Free_Trial_CTA_Screen.png";
@@ -19,6 +20,7 @@ const blockers: {
   zone: Zone;
   zoneLabel: string;
   step: string;
+  summary: string;
   text: string;
   screenshots?: Screenshot[][];
 }[] = [
@@ -28,6 +30,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Step 5 - 11.3% drop, 46s",
+    summary: "When benchmark scores are 0% for everyone, the 'Your competitors are outperforming you' headline destroys trust right when the product is supposed to be earning it.",
     text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both you and all your competitors, the headline 'Your competitors are outperforming you in AI Search' just feels wrong. You've put in 4 steps of effort - the Benchmark is supposed to be the first payoff. When the data is empty, it doesn't create urgency; it makes you doubt whether the platform actually works. I tested this with SSENSE - a brand with an established editorial and strong organic presence - and every single competitor, including ones like MatchesFashion that went bankrupt two years ago, showed 0%. When the data feels wrong, the whole platform loses credibility at the worst possible moment.",
     screenshots: [
       [
@@ -45,6 +48,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Steps 1-5",
+    summary: "Users give input for 5 straight steps before the product shows anything back. Less committed users bail before seeing any value.",
     text: "The first five steps collect workspace info, personalization, competitors, and target prompts - all from you, nothing back yet. The first time the product shows value is the Benchmark (Step 5), and it can underdeliver. Users who showed up from an ad rather than a referral are probably the ones leaving in Steps 3-5 - they haven't seen anything yet that justifies the effort.",
   },
   {
@@ -53,6 +57,7 @@ const blockers: {
     zone: "tollbooth",
     zoneLabel: "Unnecessary Tollbooths",
     step: "Steps 6 and 8",
+    summary: "Two full screens that add clicks without adding information or value. The trial CTA and forced Creation/Refresh choice are pure friction.",
     text: "Step 6 asks you to click 'Start Free Trial' - but you already signed up. Why is this a separate step? It just makes you wonder if you're about to get charged. Step 8 forces you to pick Content Creation or Content Refresh before you really understand either one. That kind of premature choice makes people hesitate.",
     screenshots: [
       [
@@ -75,6 +80,7 @@ const blockers: {
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
     step: "Steps 11 to 12 - 28% drop, 65s",
+    summary: "The single biggest drop: 28% of users who completed the entire onboarding never generate a single piece of content. Too many clicks, too many waits.",
     text: "The single biggest drop in the funnel. You arrive at the Actions Grid after 10 onboarding steps, see 13 rows of keywords, and need to click through a 4-5 step sequential workflow (brief, analysis, article, internal links, external links), each requiring a click and an AI processing wait. 28% of the people who made it through the entire onboarding never see a single piece of generated content.",
     screenshots: [
       [
@@ -97,6 +103,7 @@ const blockers: {
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
     step: "Step 12+",
+    summary: "The onboarding gets you to the aha moment and then just stops. No publish button, no 'generate next' - no obvious reason to come back.",
     text: "Even among the 41% who reach the aha moment and see a generated article, the experience just stops. There's no 'publish this,' no 'generate your next article,' no obvious next move. The onboarding gets you to the aha moment but then leaves you there, which means even people who activated might not come back for a second session.",
   },
 ];
@@ -126,10 +133,25 @@ function ScreenshotImage({ shot }: { shot: Screenshot }) {
 }
 
 export default function BlockerCards() {
+  const [expandedBlockers, setExpandedBlockers] = useState<Set<number>>(new Set());
+
+  const toggleBlocker = (num: number) => {
+    setExpandedBlockers((prev) => {
+      const next = new Set(prev);
+      if (next.has(num)) {
+        next.delete(num);
+      } else {
+        next.add(num);
+      }
+      return next;
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4">
       {blockers.map((b, i) => {
         const s = zoneStyles[b.zone];
+        const isExpanded = expandedBlockers.has(b.num);
         return (
           <ScrollReveal key={b.num} delay={i * 60}>
             <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
@@ -144,22 +166,43 @@ export default function BlockerCards() {
                   </span>
                 </div>
                 <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
-                <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
-
-                {b.screenshots?.map((row, ri) => (
-                  <div
-                    key={ri}
-                    className={`mt-4 ${
-                      row.length > 1
-                        ? "grid grid-cols-1 gap-3 md:grid-cols-2"
-                        : ""
-                    }`}
+                <p className="text-sm leading-[1.7] text-foreground/80">{b.summary}</p>
+                <button
+                  type="button"
+                  onClick={() => toggleBlocker(b.num)}
+                  className="mt-2 flex items-center gap-1 text-sm font-medium text-primary cursor-pointer hover:underline"
+                >
+                  <span>{isExpanded ? "Show less" : "Read more"}</span>
+                  <span
+                    className="text-xs transition-transform duration-200"
+                    style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
                   >
-                    {row.map((shot, si) => (
-                      <ScreenshotImage key={si} shot={shot} />
-                    ))}
-                  </div>
-                ))}
+                    ▾
+                  </span>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
+                    isExpanded ? "mt-3 max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
+
+                  {b.screenshots?.map((row, ri) => (
+                    <div
+                      key={ri}
+                      className={`mt-4 ${
+                        row.length > 1
+                          ? "grid grid-cols-1 gap-3 md:grid-cols-2"
+                          : ""
+                      }`}
+                    >
+                      {row.map((shot, si) => (
+                        <ScreenshotImage key={si} shot={shot} />
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>

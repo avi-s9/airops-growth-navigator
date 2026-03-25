@@ -8,6 +8,7 @@ const experiments = [
     bgColor: "bg-zone-lastmile-bg",
     borderColor: "border-zone-lastmile",
     targetZone: "Last-Mile Cliff",
+    collapsedTarget: "Target: lift Grid-to-Execute conversion from 72% to 85%+",
     hypothesis:
       'If we auto-trigger content generation for the highest-priority keyword during onboarding (while the user reviews Brand Kit), users will arrive at the Grid with content already generated, reducing the Step 11-to-12 drop from 28% to under 15%.',
     rationale:
@@ -35,6 +36,7 @@ const experiments = [
     bgColor: "bg-zone-trust-bg",
     borderColor: "border-zone-trust",
     targetZone: "Trust Erosion",
+    collapsedTarget: "Target: lift mid-funnel completion from ~63% to ~72%",
     hypothesis:
       'If we show users a single personalized competitive insight right after the Competitors step (e.g., "Farfetch is cited for 3 prompts where you\'re invisible"), mid-funnel completion from Step 3 to Step 10 will improve by 9-15%.',
     rationale:
@@ -96,18 +98,7 @@ export default function ExperimentCards() {
                       Targets: {exp.targetZone}
                     </span>
                   </div>
-                  <div className="flex gap-6">
-                    {[
-                      { label: "PRIMARY METRIC", value: exp.metrics.primary.name, color: "#1A1A1A" },
-                      { label: "CURRENT", value: exp.metrics.primary.current, color: "#DC2626" },
-                      { label: "TARGET", value: exp.metrics.primary.target, color: "#059669" },
-                    ].map((m) => (
-                      <div key={m.label}>
-                        <div className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">{m.label}</div>
-                        <div className="text-sm font-medium" style={{ color: m.color }}>{m.value}</div>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-sm text-foreground/60">{exp.collapsedTarget}</p>
                 </div>
                 <span
                   className="mt-1 text-xl text-text-secondary transition-transform"

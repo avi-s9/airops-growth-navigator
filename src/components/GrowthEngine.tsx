@@ -105,7 +105,7 @@ function TargetAudience() {
             Content/SEO Leads at Mid-Market & Enterprise
           </h3>
           <p className="text-sm leading-[1.7] text-foreground/70">
-            The people who own organic traffic and are starting to hear from their CMO: "What's our AI search strategy?" They need to answer a question they don't have tools for yet. The Citation Checker gives them a concrete data point. The Audit gives them the ammo to go to leadership and say: "Here's where we stand, here's the gap, and here's a platform that can close it."
+            Under pressure from their CMO to answer "What's our AI search strategy?" The Checker gives them a data point. The Audit gives them something concrete to show their boss.
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
@@ -116,7 +116,7 @@ function TargetAudience() {
             Agency Leads & Consultants
           </h3>
           <p className="text-sm leading-[1.7] text-foreground/70">
-            People who manage content strategy for multiple clients. The Checker becomes a prospecting tool - run it on a client's site, share the results, and use that to pitch them on AirOps.
+            The Checker becomes a prospecting tool. Run it on a client's site, share the results, pitch them on AirOps.
           </p>
         </div>
       </div>
@@ -129,25 +129,25 @@ const channels = [
   {
     icon: "🌱",
     title: "Organic / SEO",
-    desc: "Landing pages targeting 'AI search visibility checker,' 'is my site in ChatGPT,' 'AEO audit tool' - emerging high-intent queries with low competition. Publish the methodology as thought leadership content.",
+    desc: "Target emerging queries like 'AI search visibility checker' and 'is my site in ChatGPT' - high intent, low competition.",
     tag: "Compounding · Medium-term",
   },
   {
     icon: "📣",
     title: "Social / Community",
-    desc: "Product Hunt launch of the Checker as a free tool. Seed in content leader communities like Superpath, SEO Twitter/X, and LinkedIn groups. Create a 'Top 100 SaaS AI Visibility' report tagging companies to get them checking their own scores.",
+    desc: "Product Hunt launch as a free tool. Seed in Superpath, SEO Twitter/X, LinkedIn groups. Publish a 'Top 100 SaaS AI Visibility' report tagging companies.",
     tag: "Viral · Short-term",
   },
   {
     icon: "🎯",
     title: "Paid",
-    desc: "LinkedIn ads targeting Content/SEO Director titles at mid-market companies, driving to the Checker, not AirOps directly. Retarget Checker users who didn't convert to the Audit with 'See your full report' ads.",
+    desc: "LinkedIn ads targeting Content/SEO Directors at mid-market companies, driving to the Checker. Retarget non-converters with 'See your full report.'",
     tag: "Targeted · Test-and-learn",
   },
   {
     icon: "🤝",
     title: "Partner / Integration",
-    desc: "Offer the Checker as an embeddable widget for SEO tool review sites, marketing blogs, and agency partners. Every embed is a distribution point.",
+    desc: "Offer the Checker as an embeddable widget for SEO blogs and agency partners. Every embed is a distribution point.",
     tag: "Scalable · Long-term",
   },
 ];
