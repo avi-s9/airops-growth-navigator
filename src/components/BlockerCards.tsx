@@ -30,7 +30,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Step 5 - 11.3% drop, 46s",
-    summary: "When benchmark scores are 0% for everyone, the 'Your competitors are outperforming you' headline destroys trust right when the product is supposed to be earning it.",
+    summary: "I ran SSENSE through the onboarding - a brand with a strong editorial and real organic presence. Every competitor showed 0%, including MatchesFashion, which went bankrupt two years ago. When the report card says 'Your competitors are outperforming you' and every number is zero, you stop trusting the platform.",
     text: "When the AI Search Report Card returns 0% mention rate and 0% citation rate for both you and all your competitors, the headline 'Your competitors are outperforming you in AI Search' just feels wrong. You've put in 4 steps of effort - the Benchmark is supposed to be the first payoff. When the data is empty, it doesn't create urgency; it makes you doubt whether the platform actually works. I tested this with SSENSE - a brand with an established editorial and strong organic presence - and every single competitor, including ones like MatchesFashion that went bankrupt two years ago, showed 0%. When the data feels wrong, the whole platform loses credibility at the worst possible moment.",
     screenshots: [
       [
@@ -48,7 +48,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Steps 1-5",
-    summary: "Users give input for 5 straight steps before the product shows anything back. Less committed users bail before seeing any value.",
+    summary: "Five steps of entering information before AirOps shows you anything back. I stuck with it because I was evaluating the product closely, but a less motivated user coming from an ad? They'd bail by Step 4.",
     text: "The first five steps collect workspace info, personalization, competitors, and target prompts - all from you, nothing back yet. The first time the product shows value is the Benchmark (Step 5), and it can underdeliver. Users who showed up from an ad rather than a referral are probably the ones leaving in Steps 3-5 - they haven't seen anything yet that justifies the effort.",
   },
   {
@@ -57,7 +57,7 @@ const blockers: {
     zone: "tollbooth",
     zoneLabel: "Unnecessary Tollbooths",
     step: "Steps 6 and 8",
-    summary: "Two full screens that add clicks without adding information or value. The trial CTA and forced Creation/Refresh choice are pure friction.",
+    summary: "I paused at the trial CTA wondering if I was about to get charged. Turns out it's just a button that starts a free trial - an entire screen for one click. Then Step 8 asked me to pick Content Creation or Refresh before I understood either one.",
     text: "Step 6 asks you to click 'Start Free Trial' - but you already signed up. Why is this a separate step? It just makes you wonder if you're about to get charged. Step 8 forces you to pick Content Creation or Content Refresh before you really understand either one. That kind of premature choice makes people hesitate.",
     screenshots: [
       [
@@ -80,7 +80,7 @@ const blockers: {
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
     step: "Steps 11 to 12 - 28% drop, 65s",
-    summary: "The single biggest drop: 28% of users who completed the entire onboarding never generate a single piece of content. Too many clicks, too many waits.",
+    summary: "I watched the workflows run one at a time - brief, then analysis, then article, then links. It took over a minute. 28% of users who made it through 10 setup steps never finish this part. I can see why.",
     text: "The single biggest drop in the funnel. You arrive at the Actions Grid after 10 onboarding steps, see 13 rows of keywords, and need to click through a 4-5 step sequential workflow (brief, analysis, article, internal links, external links), each requiring a click and an AI processing wait. 28% of the people who made it through the entire onboarding never see a single piece of generated content.",
     screenshots: [
       [
@@ -103,7 +103,7 @@ const blockers: {
     zone: "lastmile",
     zoneLabel: "Last-Mile Cliff",
     step: "Step 12+",
-    summary: "The onboarding gets you to the aha moment and then just stops. No publish button, no 'generate next' - no obvious reason to come back.",
+    summary: "The article it generated was genuinely good - 2,400 words in SSENSE's voice with sourced links. But after it appeared, I had no idea what to do next. No publish button, no 'generate your next one.' It just stopped.",
     text: "Even among the 41% who reach the aha moment and see a generated article, the experience just stops. There's no 'publish this,' no 'generate your next article,' no obvious next move. The onboarding gets you to the aha moment but then leaves you there, which means even people who activated might not come back for a second session.",
   },
 ];
