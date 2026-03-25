@@ -183,7 +183,7 @@ export default function InvestmentDashboard() {
             {gaugeVisible && <>at least 10</>}
           </button>
         </div>
-        <div className="mt-2 text-[11px] text-foreground/40">
+        <div className="mt-2 text-[11px] text-foreground/50">
           Click a zone to see the decision framework
         </div>
       </div>
