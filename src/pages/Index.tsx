@@ -146,6 +146,14 @@ export default function Index() {
 
           <FunnelChart />
 
+          <ScrollReveal>
+            <div className="mt-8 rounded-lg border border-border/60 bg-surface-muted px-5 py-4">
+              <p className="text-[13px] leading-[1.7] text-foreground/50">
+                <span className="font-semibold text-foreground/70">A note on confidence:</span> The funnel data shows where users drop off. My walkthrough suggests why. These are hypotheses to validate, not conclusions - I'd want to see this pattern hold across multiple cohorts and traffic sources before shipping changes.
+              </p>
+            </div>
+          </ScrollReveal>
+
           {/* 1B: Blockers */}
           <div className="mt-20">
             <ScrollReveal>

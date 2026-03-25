@@ -101,6 +101,7 @@ export default function ExperimentCards() {
                     </span>
                   </div>
                   <p className="text-sm text-foreground/60">{exp.collapsedTarget}</p>
+                  <p className="mt-1 text-xs text-primary/70">{exp.ahaLift}</p>
                 </div>
                 <span
                   className="mt-1 text-xl text-text-secondary transition-transform"
