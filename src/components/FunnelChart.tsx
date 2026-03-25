@@ -73,26 +73,26 @@ export default function FunnelChart() {
       </div>
 
       {/* Chart */}
-      <div className="overflow-x-auto">
-        <div ref={chartRef} className="relative mt-2 overflow-visible" style={{ height: 340, paddingTop: 20, minWidth: 700 }}>
+      <div>
+        <div ref={chartRef} className="relative mt-2" style={{ height: 360, minWidth: 700 }}>
         {/* Grid lines */}
         {[0, 25, 50, 75, 100].map((v) => (
           <div
             key={v}
             className="absolute left-12 right-0 border-t border-border/50"
-            style={{ top: `${((100 - v) / 100) * 240}px` }}
+            style={{ top: `${((100 - v) / 100) * 240 + 40}px` }}
           />
         ))}
 
         {/* Y-axis */}
-        <div className="absolute left-0 top-0 flex w-10 flex-col justify-between" style={{ height: 240 }}>
+        <div className="absolute left-0 top-[40px] flex w-10 flex-col justify-between" style={{ height: 240 }}>
           {[100, 75, 50, 25, 0].map((v) => (
             <span key={v} className="text-right font-mono text-[11px] text-text-secondary">{v}%</span>
           ))}
         </div>
 
         {/* Bars */}
-        <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: 240, top: 0 }}>
+        <div className="absolute left-12 right-0 flex items-end gap-1.5" style={{ height: 240, top: 40 }}>
           {funnelData.map((item, idx) => {
             const isHovered = hovered === item.step;
             const isFiltered = selectedZone && item.zone !== selectedZone;
