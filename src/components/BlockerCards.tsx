@@ -48,7 +48,7 @@ const blockers: {
     zone: "trust",
     zoneLabel: "Trust Erosion",
     step: "Steps 1-5",
-    summary: "Five steps of entering information before AirOps shows you anything back. I stuck with it because I was evaluating the product closely, but a less motivated user coming from an ad? They'd bail by Step 4.",
+    summary: "Five steps of entering information before AirOps shows you anything back. I stuck with it because I was evaluating the product closely, but someone less patient would bail by Step 4.",
     text: "The first five steps collect workspace info, personalization, competitors, and target prompts - all from you, nothing back yet. The first time the product shows value is the Benchmark (Step 5), and it can underdeliver. Users who showed up from an ad rather than a referral are probably the ones leaving in Steps 3-5 - they haven't seen anything yet that justifies the effort.",
   },
   {
@@ -58,7 +58,7 @@ const blockers: {
     zoneLabel: "Unnecessary Tollbooths",
     step: "Steps 6 and 8",
     summary: "I paused at the trial CTA wondering if I was about to get charged. Turns out it's just a button that starts a free trial - an entire screen for one click. Then Step 8 asked me to pick Content Creation or Refresh before I understood either one.",
-    text: "Step 6 asks you to click 'Start Free Trial' - but you already signed up. Why is this a separate step? It just makes you wonder if you're about to get charged. Step 8 forces you to pick Content Creation or Content Refresh before you really understand either one. That kind of premature choice makes people hesitate.",
+    text: "Step 6 asks you to click 'Start Free Trial' - but you already signed up. Why is this a separate step? It just makes you wonder if you're about to get charged. Step 8 forces you to pick Content Creation or Content Refresh before you really understand either one. People hesitate when you ask them to commit before they understand the options.",
     screenshots: [
       [
         {

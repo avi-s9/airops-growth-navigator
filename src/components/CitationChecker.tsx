@@ -215,7 +215,7 @@ export default function CitationChecker() {
             <div className="mt-2 text-sm text-foreground/60">
               This page is cited in{" "}
               <strong className="text-foreground/80">{result.score} of {result.totalPrompts}</strong>{" "}
-              relevant AI searches
+              AI searches we checked
             </div>
             {result.topCompetitor && (
               <div className="mt-3 inline-block rounded-lg bg-foreground/5 px-4 py-2 text-[13px] text-foreground/70">

@@ -22,8 +22,8 @@ const proposedSteps = [
   { name: "Competitors + Micro-Insight", zone: "new", note: "Micro-insight value moment" },
   { name: "Target Prompts", zone: "green", note: null },
   { name: "Benchmark (reframed)", zone: "new", note: "Lead with opportunity count" },
-  { name: "Brand Kit Review", zone: "new", note: "Trial auto-started; auto-generates article in background" },
-  { name: "Grid", zone: "new", note: "Content already generated for Row 1" },
+  { name: "Brand Kit Review", zone: "new", note: "Trial auto-started in background. Article generation kicks off here - riskiest assumption is whether it finishes before the user reaches the Grid" },
+  { name: "Grid", zone: "new", note: "Content already generated for Row 1 (if generation was fast enough)" },
   { name: "Review Content = AHA", zone: "aha", note: "Clear CTA: Publish or Generate next" },
 ];
 

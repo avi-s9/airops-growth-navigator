@@ -8,10 +8,10 @@ const SectionHeader = ({ children }: { children: React.ReactNode }) => (
 /* ─── 2A: Growth Loop Diagram ─── */
 function GrowthLoop() {
   const stages = [
-    { label: "Free Tool: AI Citation Checker", tag: "Zero friction, ungated" },
-    { label: "Gated: Full Domain Audit", tag: "Email capture" },
-    { label: "Pre-populated AirOps Trial", tag: "Data carries over" },
-    { label: "Aha Moment", tag: "Accelerated activation" },
+    { label: "Free Tool: AI Citation Checker", tag: "No signup needed" },
+    { label: "Gated: Full Domain Audit", tag: "Email gate" },
+    { label: "Pre-populated AirOps Trial", tag: "Their audit data pre-fills the trial" },
+    { label: "Aha Moment", tag: "Shorter path to aha" },
   ];
 
   return (
@@ -255,6 +255,7 @@ function Prioritization() {
               "Does the Checker output feel compelling enough that people proceed to an Audit?",
               "What's the optimal gate timing: after 1 check vs. 3 checks vs. ungated audit?",
               "Does the pre-populated onboarding path improve activation vs. cold signups?",
+              "Can we generate audit reports fast enough to feel instant? If it takes more than 30 seconds, the conversion drops.",
             ].map((q, i) => (
               <li key={i} className="flex items-start gap-2 text-sm leading-[1.7] text-foreground/70">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
