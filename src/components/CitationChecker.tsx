@@ -230,7 +230,7 @@ export default function CitationChecker() {
 
           {/* Platform Breakdown */}
           <div className="mb-5 flex flex-col gap-2">
-            <div className="text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/40">
+            <div className="text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/50">
               Platform Breakdown
             </div>
             {platforms.map((p) => {
