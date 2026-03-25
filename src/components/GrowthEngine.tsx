@@ -92,6 +92,60 @@ function PrototypeSection() {
 }
 
 /* ─── 2C: Target Audience ─── */
+function FunnelMetrics() {
+  return (
+    <ScrollReveal className="mb-10">
+      <SectionHeader>What We'd Track</SectionHeader>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {[
+          {
+            stage: "Checker engagement",
+            metric: "Checker to Audit conversion rate",
+            target: "20%+",
+            why: "Are people compelled enough by one page's results to see their full domain?",
+          },
+          {
+            stage: "Audit conversion",
+            metric: "Audit to Trial signup rate",
+            target: "12%+",
+            why: "Does the report create enough urgency to start using the product?",
+          },
+          {
+            stage: "Activation",
+            metric: "Trial to Aha rate (audit-sourced)",
+            target: "Higher than organic signups",
+            why: "Pre-populated onboarding should shorten time-to-value. If it doesn't, the bridge isn't working.",
+          },
+          {
+            stage: "Virality",
+            metric: "Audit share rate",
+            target: "15%+",
+            why: "Are reports getting forwarded internally or posted on LinkedIn? This is what makes the channel compound.",
+          },
+        ].map((item) => (
+          <div
+            key={item.stage}
+            className="rounded-xl border border-border bg-card p-5 shadow-card"
+          >
+            <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.1em] text-primary">
+              {item.stage}
+            </div>
+            <div className="mb-1 text-sm font-semibold text-foreground">
+              {item.metric}
+            </div>
+            <div className="mb-2 font-mono text-xs text-primary">
+              Target: {item.target}
+            </div>
+            <p className="text-[13px] leading-[1.6] text-foreground/60">
+              {item.why}
+            </p>
+          </div>
+        ))}
+      </div>
+    </ScrollReveal>
+  );
+}
+
 function TargetAudience() {
   return (
     <ScrollReveal className="mb-10">
@@ -295,6 +349,7 @@ export default function GrowthEngine() {
       <SectionHeader>The Growth Loop</SectionHeader>
       <GrowthLoop />
       <PrototypeSection />
+      <FunnelMetrics />
       <TargetAudience />
       <Distribution />
       <Sequencing />
