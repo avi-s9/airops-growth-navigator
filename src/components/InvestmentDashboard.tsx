@@ -219,7 +219,7 @@ export default function InvestmentDashboard() {
           <div className={`mb-1 text-[13px] font-semibold ${styles.text}`}>
             {active.emoji} {active.label} - {active.primary}
           </div>
-          <div className="text-xs text-foreground/50">{active.timeframe}</div>
+          <div className="text-xs text-foreground/60">{active.timeframe}</div>
         </div>
 
         <p className="mb-4 text-sm leading-[1.7] text-foreground/80">{active.description}</p>
