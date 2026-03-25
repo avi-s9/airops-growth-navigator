@@ -122,7 +122,7 @@ export default function InvestmentDashboard() {
     <div>
       {/* Primary Metric Callout */}
       <div className="mb-6 rounded-xl border border-border bg-surface-muted p-6 text-center shadow-card">
-        <div className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em] text-foreground/40">
+        <div className="mb-1.5 text-xs font-bold uppercase tracking-[0.1em] text-foreground/50">
           Primary Success Metric
         </div>
         <div className="mb-1 font-display text-[22px] tracking-[-0.02em] text-foreground">
@@ -183,7 +183,7 @@ export default function InvestmentDashboard() {
             {gaugeVisible && <>at least 10</>}
           </button>
         </div>
-        <div className="mt-2 text-[11px] text-foreground/40">
+        <div className="mt-2 text-[11px] text-foreground/50">
           Click a zone to see the decision framework
         </div>
       </div>
@@ -219,13 +219,13 @@ export default function InvestmentDashboard() {
           <div className={`mb-1 text-[13px] font-semibold ${styles.text}`}>
             {active.emoji} {active.label} - {active.primary}
           </div>
-          <div className="text-xs text-foreground/50">{active.timeframe}</div>
+          <div className="text-xs text-foreground/60">{active.timeframe}</div>
         </div>
 
         <p className="mb-4 text-sm leading-[1.7] text-foreground/80">{active.description}</p>
 
         {/* Diagnostics */}
-        <div className="mb-2 text-xs font-bold uppercase tracking-[0.05em] text-foreground/50">
+        <div className="mb-2 text-xs font-bold uppercase tracking-[0.05em] text-foreground/60">
           Diagnostic Indicators
         </div>
         <div className="mb-4 flex flex-col gap-1.5">
@@ -267,7 +267,7 @@ export default function InvestmentDashboard() {
             </div>
           </div>
           <div
-            className="text-xl text-foreground/30 transition-transform"
+            className="text-xl text-foreground/40 transition-transform"
             style={{ transform: showResources ? "rotate(180deg)" : "rotate(0)" }}
           >
             ▾

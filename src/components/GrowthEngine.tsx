@@ -24,12 +24,12 @@ function GrowthLoop() {
               <div className="mb-2 rounded-lg border border-border bg-surface-muted px-4 py-3 text-sm font-semibold text-foreground max-md:px-2 max-md:text-xs">
                 {s.label}
               </div>
-              <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/50">
+              <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/60">
                 Stage {i + 1}: {s.tag}
               </span>
             </div>
             {i < stages.length - 1 && (
-              <div className="flex-shrink-0 text-lg text-foreground/30">→</div>
+              <div className="flex-shrink-0 text-lg text-foreground/40">→</div>
             )}
           </div>
         ))}
@@ -163,7 +163,7 @@ function TargetAudience() {
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
-          <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/50">
+          <div className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/60">
             Secondary
           </div>
           <h3 className="mb-3 text-base font-semibold text-foreground">
@@ -216,7 +216,7 @@ function Distribution() {
             <div className="mb-2 text-2xl">{ch.icon}</div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">{ch.title}</h3>
             <p className="mb-3 text-[13px] leading-[1.7] text-foreground/70">{ch.desc}</p>
-            <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-foreground/50">
+            <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-foreground/60">
               {ch.tag}
             </span>
           </div>
@@ -320,7 +320,7 @@ function Prioritization() {
         </div>
 
         <div className="rounded-xl border-l-4 border-l-border border-t border-r border-b border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
-          <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/40">
+          <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/50">
             Save for Later
           </h3>
           <ul className="mt-3 flex flex-col gap-2.5">

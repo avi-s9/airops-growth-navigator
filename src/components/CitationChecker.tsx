@@ -146,7 +146,7 @@ export default function CitationChecker() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 rounded-lg border-2 border-border bg-card px-4 py-3 text-[15px] text-foreground outline-none transition-colors placeholder:text-foreground/40 focus:border-primary"
+          className="flex-1 rounded-lg border-2 border-border bg-card px-4 py-3 text-[15px] text-foreground outline-none transition-colors placeholder:text-foreground/50 focus:border-primary"
         />
         <button
           onClick={handleCheck}
@@ -210,7 +210,7 @@ export default function CitationChecker() {
               color: result.score <= 2 ? "hsl(var(--zone-tollbooth))" : result.score <= 5 ? "hsl(28 73% 40%)" : "hsl(var(--primary))",
             }}>
               {result.score}{" "}
-              <span className="text-xl font-normal text-foreground/40">/ {result.totalPrompts}</span>
+              <span className="text-xl font-normal text-foreground/50">/ {result.totalPrompts}</span>
             </div>
             <div className="mt-2 text-sm text-foreground/60">
               This page is cited in{" "}
@@ -230,7 +230,7 @@ export default function CitationChecker() {
 
           {/* Platform Breakdown */}
           <div className="mb-5 flex flex-col gap-2">
-            <div className="text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/40">
+            <div className="text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/50">
               Platform Breakdown
             </div>
             {platforms.map((p) => {
@@ -296,7 +296,7 @@ export default function CitationChecker() {
               <p className="mb-3 text-sm text-foreground/60">
                 In production, you'd receive a full domain report within 2 minutes. Your competitors, prompts, and opportunities would pre-load into your AirOps trial - zero re-entry.
               </p>
-              <p className="text-xs text-foreground/40 italic">
+              <p className="text-xs text-foreground/50 italic">
                 This is where the self-serve funnel connects back to the onboarding flow from Section 1.
               </p>
             </div>
@@ -305,7 +305,7 @@ export default function CitationChecker() {
           {/* Prompts Detail */}
           {platforms.some((p) => result.citations[p.key].cited) && (
             <div className="mt-5">
-              <div className="mb-2 text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/40">
+              <div className="mb-2 text-[13px] font-semibold uppercase tracking-[0.05em] text-foreground/50">
                 Prompts where you're cited
               </div>
               {platforms.map((p) => {
@@ -328,7 +328,7 @@ export default function CitationChecker() {
 
       {/* Empty State */}
       {!result && !loading && (
-        <div className="py-6 text-center text-foreground/40">
+        <div className="py-6 text-center text-foreground/50">
           <div className="mb-2 text-[13px]">Try these examples:</div>
           <div className="flex justify-center gap-2">
             {["ramp.com/pricing", "chime.com/banking"].map((example) => (

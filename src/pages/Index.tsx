@@ -147,7 +147,7 @@ export default function Index() {
 
           <ScrollReveal>
             <div className="mt-8 rounded-lg border border-border/60 bg-surface-muted px-5 py-4">
-              <p className="text-[13px] leading-[1.7] text-foreground/50">
+              <p className="text-[13px] leading-[1.7] text-foreground/60">
                 <span className="font-semibold text-foreground/70">A note on confidence:</span> The funnel data shows where users drop off. My walkthrough suggests why. These are hypotheses to validate, not conclusions - I'd want to see this pattern hold across multiple cohorts and traffic sources before shipping changes.
               </p>
             </div>
@@ -227,7 +227,7 @@ export default function Index() {
       <footer className="border-t border-border px-6 py-12">
         <div className="mx-auto max-w-content text-center">
           <p className="text-sm text-text-secondary">Built by Avi - March 2026</p>
-          <p className="mt-1 text-xs text-foreground/30">Interactive presentation built with React</p>
+          <p className="mt-1 text-xs text-foreground/40">Interactive presentation built with React</p>
         </div>
       </footer>
     </div>

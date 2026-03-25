@@ -40,12 +40,12 @@ export default function ROICalculator() {
             {i > 0 && (
               <div className="flex flex-col items-center px-3 max-md:px-1.5">
                 <span className="mb-1 font-mono text-xs font-semibold text-primary">{stage.pct}</span>
-                <div className="text-foreground/30">→</div>
+                <div className="text-foreground/40">→</div>
               </div>
             )}
             <div className="flex flex-col items-center text-center">
               <span className="font-mono text-2xl font-bold text-foreground max-md:text-lg">{stage.value}</span>
-              <span className="mt-1 text-xs text-foreground/50 max-md:text-[10px]">{stage.label}</span>
+              <span className="mt-1 text-xs text-foreground/60 max-md:text-[10px]">{stage.label}</span>
             </div>
           </div>
         ))}
@@ -72,7 +72,7 @@ export default function ROICalculator() {
               className="w-full cursor-pointer accent-primary"
               style={{ accentColor: "hsl(var(--primary))" }}
             />
-            <div className="mt-0.5 flex justify-between text-[10px] text-foreground/30">
+            <div className="mt-0.5 flex justify-between text-[10px] text-foreground/50">
               <span>{s.key === "checkerUsers" ? s.min.toLocaleString() : s.min}{s.suffix}</span>
               <span>{s.key === "checkerUsers" ? s.max.toLocaleString() : s.max}{s.suffix}</span>
             </div>
