@@ -110,6 +110,9 @@ export default function Index() {
                 The dashboard updated with real mention and citation rates. The problem isn't the output.
                 It's that most people never get to see it.
               </p>
+              <p className="mb-5 max-w-[720px] text-sm leading-[1.7] text-foreground/70">
+                Quality here means on-brand voice, publishable with light edits, properly sourced links, and structured well enough that it's clearly better than starting from scratch. The SSENSE article hit all four.
+              </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <figure>
                   <button
