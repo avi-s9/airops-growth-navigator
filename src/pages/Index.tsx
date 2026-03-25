@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef, useCallback } from "react";
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import FunnelChart from "@/components/FunnelChart";
@@ -19,8 +20,63 @@ const SectionDivider = () => (
 );
 
 export default function Index() {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxSrc(null);
+    triggerRef.current?.focus();
+    triggerRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    if (!lightboxSrc) return;
+    closeBtnRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "Tab") {
+        e.preventDefault();
+        closeBtnRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [lightboxSrc, closeLightbox]);
+
+  const openLightbox = (src: string, trigger: HTMLElement) => {
+    triggerRef.current = trigger;
+    setLightboxSrc(src);
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Lightbox */}
+      {lightboxSrc && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded screenshot"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            ref={closeBtnRef}
+            type="button"
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-2xl text-white transition-colors hover:bg-white/20"
+          >
+            ✕
+          </button>
+          <img
+            src={lightboxSrc}
+            alt="Expanded screenshot"
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
       <NavBar />
       <HeroSection />
 
@@ -55,17 +111,27 @@ export default function Index() {
               </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <figure>
-                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <button
+                    type="button"
+                    className="block w-full cursor-pointer overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-opacity hover:opacity-90"
+                    onClick={(e) => openLightbox(articleImg, e.currentTarget)}
+                    aria-label="View larger: Generated article screenshot"
+                  >
                     <img src={articleImg} alt="Generated article screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
-                  </div>
+                  </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
                     The generated article — 2,400 words in SSENSE's editorial voice, with external links and citations.
                   </figcaption>
                 </figure>
                 <figure>
-                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <button
+                    type="button"
+                    className="block w-full cursor-pointer overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-opacity hover:opacity-90"
+                    onClick={(e) => openLightbox(dashboardImg, e.currentTarget)}
+                    aria-label="View larger: SSENSE dashboard screenshot"
+                  >
                     <img src={dashboardImg} alt="SSENSE dashboard screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
-                  </div>
+                  </button>
                   <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
                     The SSENSE dashboard after onboarding — 35.6% mention rate, 5.1% citation rate. Real data, once you get past the 0% during setup.
                   </figcaption>
