@@ -12,23 +12,34 @@ export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length > 0) {
-          setActive(visible[0].target.id);
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 120;
+      let current = "";
+
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el) {
+          const top = el.offsetTop;
+          const bottom = top + el.offsetHeight;
+          if (scrollY >= top && scrollY < bottom) {
+            current = s.id;
+          }
         }
-      },
-      { rootMargin: "-80px 0px -60% 0px", threshold: 0 }
-    );
+      }
 
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
+      if (!current && window.scrollY < 200) {
+        current = sections[0].id;
+      }
 
-    return () => observer.disconnect();
-  }, []);
+      if (current && current !== active) {
+        setActive(current);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [active]);
 
   useEffect(() => {
     const handleScroll = () => {
