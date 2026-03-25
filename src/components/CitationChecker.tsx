@@ -328,7 +328,7 @@ export default function CitationChecker() {
 
       {/* Empty State */}
       {!result && !loading && (
-        <div className="py-6 text-center text-foreground/40">
+        <div className="py-6 text-center text-foreground/50">
           <div className="mb-2 text-[13px]">Try these examples:</div>
           <div className="flex justify-center gap-2">
             {["ramp.com/pricing", "chime.com/banking"].map((example) => (

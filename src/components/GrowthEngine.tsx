@@ -320,7 +320,7 @@ function Prioritization() {
         </div>
 
         <div className="rounded-xl border-l-4 border-l-border border-t border-r border-b border-border bg-card p-6 shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
-          <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/40">
+          <h3 className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-foreground/50">
             Save for Later
           </h3>
           <ul className="mt-3 flex flex-col gap-2.5">

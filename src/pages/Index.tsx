@@ -227,7 +227,7 @@ export default function Index() {
       <footer className="border-t border-border px-6 py-12">
         <div className="mx-auto max-w-content text-center">
           <p className="text-sm text-text-secondary">Built by Avi - March 2026</p>
-          <p className="mt-1 text-xs text-foreground/30">Interactive presentation built with React</p>
+          <p className="mt-1 text-xs text-foreground/40">Interactive presentation built with React</p>
         </div>
       </footer>
     </div>

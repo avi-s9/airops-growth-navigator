@@ -267,7 +267,7 @@ export default function InvestmentDashboard() {
             </div>
           </div>
           <div
-            className="text-xl text-foreground/30 transition-transform"
+            className="text-xl text-foreground/40 transition-transform"
             style={{ transform: showResources ? "rotate(180deg)" : "rotate(0)" }}
           >
             ▾

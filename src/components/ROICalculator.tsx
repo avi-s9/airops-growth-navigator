@@ -72,7 +72,7 @@ export default function ROICalculator() {
               className="w-full cursor-pointer accent-primary"
               style={{ accentColor: "hsl(var(--primary))" }}
             />
-            <div className="mt-0.5 flex justify-between text-[10px] text-foreground/30">
+            <div className="mt-0.5 flex justify-between text-[10px] text-foreground/50">
               <span>{s.key === "checkerUsers" ? s.min.toLocaleString() : s.min}{s.suffix}</span>
               <span>{s.key === "checkerUsers" ? s.max.toLocaleString() : s.max}{s.suffix}</span>
             </div>
