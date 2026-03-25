@@ -50,6 +50,29 @@ export default function HeroSection() {
             </div>
           ))}
         </div>
+
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => document.getElementById('aha-moment')?.scrollIntoView({ behavior: 'smooth' })}
+            className="cursor-pointer text-foreground/20 transition-colors hover:text-foreground/40"
+            aria-label="Scroll to content"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="animate-bounce"
+            >
+              <path d="M7 13l5 5 5-5" />
+              <path d="M7 6l5 5 5-5" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );
