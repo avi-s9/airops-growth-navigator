@@ -157,29 +157,38 @@ export default function BlockerCards() {
             <div className="group flex cursor-default overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-card-hover">
               <div className={`w-1.5 flex-shrink-0 transition-all duration-200 ${s.bar} ${s.barHover}`} />
               <div className="flex-1 p-5">
-                <button
-                  type="button"
-                  className="mb-2 flex w-full flex-wrap items-center gap-3 text-left"
-                  onClick={() => toggleBlocker(b.num)}
-                  aria-expanded={isExpanded}
-                >
+                <div className="mb-2 flex flex-wrap items-center gap-3">
                   <span className="text-base font-bold text-foreground">
                     {b.num}. {b.title}
                   </span>
                   <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.pill}`}>
                     {b.zoneLabel}
                   </span>
-                  <span className="ml-auto text-text-secondary">{isExpanded ? "−" : "+"}</span>
+                </div>
+
+                <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
+                <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
+
+                <button
+                  type="button"
+                  onClick={() => toggleBlocker(b.num)}
+                  className="mt-2 flex items-center gap-1 text-sm font-medium text-primary cursor-pointer hover:underline"
+                  aria-expanded={isExpanded}
+                >
+                  <span>{isExpanded ? "Show less" : "Read more"}</span>
+                  <span
+                    className="text-xs transition-transform duration-200"
+                    style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+                  >
+                    ▾
+                  </span>
                 </button>
 
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-out ${
-                    isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+                    isExpanded ? "mt-3 max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="mb-2 font-mono text-xs text-text-secondary">{b.step}</div>
-                  <p className="text-sm leading-[1.7] text-foreground/80">{b.text}</p>
-
                   {b.screenshots?.map((row, ri) => (
                     <div
                       key={ri}
