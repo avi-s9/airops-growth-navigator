@@ -210,7 +210,7 @@ export default function CitationChecker() {
               color: result.score <= 2 ? "hsl(var(--zone-tollbooth))" : result.score <= 5 ? "hsl(28 73% 40%)" : "hsl(var(--primary))",
             }}>
               {result.score}{" "}
-              <span className="text-xl font-normal text-foreground/40">/ {result.totalPrompts}</span>
+              <span className="text-xl font-normal text-foreground/50">/ {result.totalPrompts}</span>
             </div>
             <div className="mt-2 text-sm text-foreground/60">
               This page is cited in{" "}
