@@ -1,6 +1,8 @@
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import FunnelChart from "@/components/FunnelChart";
+import articleImg from "@/assets/Generated_Article_Screenshot.png";
+import dashboardImg from "@/assets/SSENSE_Dashboard_Screenshot.png";
 import BlockerCards from "@/components/BlockerCards";
 import RedesignedFlow from "@/components/RedesignedFlow";
 import ExperimentCards from "@/components/ExperimentCards";
@@ -40,6 +42,38 @@ export default function Index() {
               time-to-convert. Here's where they drop off, why, and what to do about it.
             </p>
           </ScrollReveal>
+          <ScrollReveal className="mb-12">
+            <div className="rounded-xl border border-primary/20 bg-primary/[0.03] p-6">
+              <h3 className="mb-3 font-display text-lg tracking-[-0.02em] text-foreground">
+                What the aha moment actually looks like
+              </h3>
+              <p className="mb-6 max-w-[720px] text-sm leading-[1.7] text-foreground/80">
+                I ran SSENSE through the full onboarding. When it works, the output is genuinely impressive —
+                a 2,400-word article written in SSENSE's editorial voice, with sourced links, ready to publish.
+                The dashboard updated with real mention and citation rates. The problem isn't the destination.
+                It's how few people get there.
+              </p>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <figure>
+                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <img src={articleImg} alt="Generated article screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
+                  </div>
+                  <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
+                    The generated article — 2,400 words in SSENSE's editorial voice, with external links and citations.
+                  </figcaption>
+                </figure>
+                <figure>
+                  <div className="overflow-hidden rounded-lg border border-border shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <img src={dashboardImg} alt="SSENSE dashboard screenshot" className="block w-full" loading="lazy" width={1280} height={800} />
+                  </div>
+                  <figcaption className="mt-2 font-body text-[13px] italic text-text-secondary">
+                    The SSENSE dashboard after onboarding — 35.6% mention rate, 5.1% citation rate. Real data, once you get past the 0% during setup.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </ScrollReveal>
+
           <FunnelChart />
 
           {/* 1B: Blockers */}
