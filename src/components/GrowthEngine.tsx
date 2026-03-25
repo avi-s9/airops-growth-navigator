@@ -24,7 +24,7 @@ function GrowthLoop() {
               <div className="mb-2 rounded-lg border border-border bg-surface-muted px-4 py-3 text-sm font-semibold text-foreground max-md:px-2 max-md:text-xs">
                 {s.label}
               </div>
-              <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/50">
+              <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-foreground/60">
                 Stage {i + 1}: {s.tag}
               </span>
             </div>
