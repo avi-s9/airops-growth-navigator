@@ -216,7 +216,7 @@ function Distribution() {
             <div className="mb-2 text-2xl">{ch.icon}</div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">{ch.title}</h3>
             <p className="mb-3 text-[13px] leading-[1.7] text-foreground/70">{ch.desc}</p>
-            <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-foreground/50">
+            <span className="rounded-full bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-foreground/60">
               {ch.tag}
             </span>
           </div>
