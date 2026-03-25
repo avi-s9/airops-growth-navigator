@@ -9,6 +9,7 @@ const experiments = [
     borderColor: "border-zone-lastmile",
     targetZone: "Last-Mile Cliff",
     collapsedTarget: "Target: lift Grid-to-Execute conversion from 72% to 85%+",
+    ahaLift: "Estimated overall activation lift: 41.3% to ~48.7%",
     hypothesis:
       'If we auto-trigger content generation for the highest-priority keyword during onboarding (while the user reviews Brand Kit), users will arrive at the Grid with content already generated, reducing the Step 11-to-12 drop from 28% to under 15%.',
     rationale:
@@ -37,6 +38,7 @@ const experiments = [
     borderColor: "border-zone-trust",
     targetZone: "Trust Erosion",
     collapsedTarget: "Target: lift mid-funnel completion from ~63% to ~72%",
+    ahaLift: "Estimated overall activation lift: 41.3% to ~47-50% (compounds with Experiment A)",
     hypothesis:
       'If we show users a single personalized competitive insight right after the Competitors step (e.g., "Farfetch is cited for 3 prompts where you\'re invisible"), mid-funnel completion from Step 3 to Step 10 will improve by 9-15%.',
     rationale:
@@ -99,6 +101,7 @@ export default function ExperimentCards() {
                     </span>
                   </div>
                   <p className="text-sm text-foreground/60">{exp.collapsedTarget}</p>
+                  <p className="mt-1 text-xs text-primary/70">{exp.ahaLift}</p>
                 </div>
                 <span
                   className="mt-1 text-xl text-text-secondary transition-transform"

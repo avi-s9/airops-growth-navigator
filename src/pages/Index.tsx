@@ -110,6 +110,9 @@ export default function Index() {
                 The dashboard updated with real mention and citation rates. The problem isn't the output.
                 It's that most people never get to see it.
               </p>
+              <p className="mb-5 max-w-[720px] text-sm leading-[1.7] text-foreground/70">
+                Quality here means on-brand voice, publishable with light edits, properly sourced links, and structured well enough that it's clearly better than starting from scratch. The SSENSE article hit all four.
+              </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <figure>
                   <button
@@ -142,6 +145,14 @@ export default function Index() {
           </ScrollReveal>
 
           <FunnelChart />
+
+          <ScrollReveal>
+            <div className="mt-8 rounded-lg border border-border/60 bg-surface-muted px-5 py-4">
+              <p className="text-[13px] leading-[1.7] text-foreground/50">
+                <span className="font-semibold text-foreground/70">A note on confidence:</span> The funnel data shows where users drop off. My walkthrough suggests why. These are hypotheses to validate, not conclusions - I'd want to see this pattern hold across multiple cohorts and traffic sources before shipping changes.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* 1B: Blockers */}
           <div className="mt-20">

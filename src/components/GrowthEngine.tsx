@@ -342,10 +342,54 @@ function Prioritization() {
   );
 }
 
+/* ─── 2G: Risks ─── */
+function Risks() {
+  return (
+    <ScrollReveal className="mt-10">
+      <SectionHeader>Risks</SectionHeader>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {[
+          {
+            risk: "Data quality",
+            detail: "If citation results feel inaccurate (like the 0% Benchmark problem), the Checker undermines itself. We'd soft-launch in verticals where we have strong coverage first.",
+          },
+          {
+            risk: "Lead quality mismatch",
+            detail: "The Checker might attract curious marketers who'll never buy. If Audit-to-Trial stays below 5%, the audience isn't right.",
+          },
+          {
+            risk: "Report, not product",
+            detail: "People might love the audit but see no reason to use AirOps. The pre-populated trial bridge is designed to prevent this, but it's an assumption to test.",
+          },
+          {
+            risk: "Shareability weaker than expected",
+            detail: "If share rate stays below 5%, growth depends entirely on paid. That changes the unit economics and might kill the concept.",
+          },
+        ].map((item) => (
+          <div
+            key={item.risk}
+            className="rounded-xl border border-border bg-card p-5 shadow-card"
+          >
+            <div className="mb-1 text-sm font-semibold text-foreground">
+              {item.risk}
+            </div>
+            <p className="text-[13px] leading-[1.6] text-foreground/60">
+              {item.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+    </ScrollReveal>
+  );
+}
+
 /* ─── Main Export ─── */
 export default function GrowthEngine() {
   return (
     <>
+      <p className="mb-8 text-sm leading-[1.7] text-foreground/60 italic border-l-2 border-primary/30 pl-4">
+        Assuming the activation fixes from Part 1 are live and working, here's how I'd drive more users into the top of the funnel.
+      </p>
       <SectionHeader>The Growth Loop</SectionHeader>
       <GrowthLoop />
       <PrototypeSection />
@@ -354,6 +398,7 @@ export default function GrowthEngine() {
       <Distribution />
       <Sequencing />
       <Prioritization />
+      <Risks />
     </>
   );
 }
